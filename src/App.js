@@ -1,8 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import logo from './logo.svg';
-import './App.css';
 import './css/globals.css';
 import SplashScreen from './components/SplashScreen';
 import ScenarioIntro from './components/ScenarioIntro';
