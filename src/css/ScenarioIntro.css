@@ -1,0 +1,38 @@
+/*.intro-container {*/
+    /*background: url('../images/it-bg.jpg');*/
+    /*width: 960px;*/
+    /*height: 540px;*/
+/*}*/
+
+.intro-container {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+
+}
+.blue-box {
+    position: absolute;
+    /*left: 384px;*/
+    /*top: 58px;*/
+}
+
+.scenario-position {
+    width: 554px;
+    height: 464px;
+    padding: 20px;
+    top: 0;
+    text-align: left;
+}
+
+.continue-wrap {
+    margin-top: 1rem !important;
+}
+.scenario-continue {
+    color: #88D8DA;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px;
+    width: 220px !important;
+    background-color: #007EA6;
+}

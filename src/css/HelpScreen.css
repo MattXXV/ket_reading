@@ -1,0 +1,28 @@
+.help-screen {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 960px;
+    height: 540px;
+    text-align: left;
+}
+.help-cover {
+    position: absolute;
+    width: 960px;
+    height: 540px;
+    background-color: #0C7EA6;
+    opacity: 0.7;
+}
+.help-window {
+    position: absolute;
+    background-color: transparent;
+    background-image: url("../images/help-window.png");
+    background-repeat: none;
+    width: 775px;
+    height: 436px;
+    left: 122px;
+    top: 64px;
+    color: #fff;
+    padding: 40px;
+    overflow: hidden;
+}

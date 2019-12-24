@@ -1,0 +1,11 @@
+.App {
+    width: 960px;
+    height: 540px;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+}
+
+button {
+    border: none;
+}

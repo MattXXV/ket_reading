@@ -1,0 +1,37 @@
+.game-scenario-bg {
+    position: absolute;
+    top: 263px;
+    left: -1133px;
+}
+
+
+.customer-response-wrapper {
+    position: absolute;
+    top: 0;
+    right: -299px;
+    height: 387px;
+    background: #0C7EA6
+}
+
+.customer-response-button {
+    background: url("../images/response-bttn.png");
+    height: 387px;
+    width: 25px;
+    background-repeat: none;
+}
+
+.response-text {
+    float: right;
+    max-width: 300px;
+    padding: 80px 10px 0 20px;
+    text-align: left;
+}
+
+.response-text h3 {
+    font-size: 22px;
+    color: white;
+}
+.response-text p {
+    font-size: 16px;
+    color: white;
+}

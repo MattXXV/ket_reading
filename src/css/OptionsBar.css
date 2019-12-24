@@ -1,0 +1,37 @@
+.app-ui-button-box {
+    position: absolute;
+    background-color: #0C7EA6;
+    padding: 3px;
+    padding-bottom: 0;
+    width: 130px;
+    right: 0;
+    top: 0;
+}
+
+
+.app-ui-map-button {
+    display: inline-block;
+    background-color: transparent;
+    background-image: url("../images/button-map.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0;
+    width: 42px;
+    height: 42px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+
+.app-ui-help-button {
+    display: inline-block;
+    background-color: transparent;
+    background-image: url('../images/help-icon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0;
+    width: 44px;
+    height: 44px;
+    margin-left: 5px;
+    margin-right: 5px;
+}

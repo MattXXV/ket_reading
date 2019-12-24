@@ -1,0 +1,42 @@
+.interaction-box {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 165px;
+    background: #c5c4c9;
+    padding-top: 20px;
+}
+
+.questionHolder {
+    margin-bottom: 20px;
+}
+
+.question-text {
+    text-align: center;
+    color: #0C7EA6;
+}
+
+.interaction-option-button {
+    width: 281px;
+    color: white;
+    font-weight: 400;
+    padding: 15px 0;
+    border: 10px solid #064763;
+    background: #0c7ea6;
+}
+
+.feedback-container  {
+    display: none;
+}
+
+.feedback-container p {
+    color: #0C7EA6;
+}
+
+.feedback-container button  {
+    width: 200px;
+    height: 35px;
+    color: #fff;
+    margin: auto;
+    background: #0c7ea6;
+}

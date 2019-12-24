@@ -1,0 +1,64 @@
+/* Splash Screen */
+.splash-screen {
+    position: absolute;
+    width: 960px;
+    height: 540px;
+    left: 0px;
+    top: 0px;
+    background-color: transparent;
+    background-image: url(../images/graphic-background.png);
+    background-repeat: no-repeat;
+}
+
+.splash-wi-logo {
+    position: absolute;
+    width: 960px;
+    height: 540px;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    background-image: url(../images/wi-logo.png);
+    background-repeat: no-repeat;
+}
+.splash-ket-logo {
+    position: absolute;
+    width: 960px;
+    height: 540px;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    background-image: url(../images/ket-logo.png);
+    background-repeat: no-repeat;
+}
+
+.splash-title-window {
+    position: absolute;
+    width: 960px;
+    height: 540px;
+    left: 0px;
+    top: 0px;
+    background-color: transparent;
+    background-image: none;
+}
+/*.splash-truck {*/
+    /*position: absolute;*/
+    /*left: -680px;*/
+    /*top: -21px;*/
+    /*z-index: 10;*/
+/*}*/
+.splash-title {
+    position: absolute;
+    left: 2px;
+    top: 130px;
+}
+.splash-play-button {
+    background-color: transparent;
+    background-image: url(../images/button-continue.png);
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 35px;
+    color: #fff;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 400;
+    margin-right: 172px;
+}
