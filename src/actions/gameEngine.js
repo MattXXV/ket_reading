@@ -16,3 +16,7 @@ export const loadScenario = (scenario) => ({
     type: 'LOAD_SCENARIO',
     scenario
 })
+
+export const incrementAnimationSequence = () => ({
+    type: 'INCREMENT_ANIMATION_SEQUENCE'
+})

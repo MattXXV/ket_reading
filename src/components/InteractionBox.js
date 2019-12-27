@@ -1,5 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {incrementAnimationSequence} from "../actions/gameEngine";
+
+
+
 import '../css/InteractionBox.css';
 
 const InteractionBox = (props) => {
@@ -13,10 +17,10 @@ const InteractionBox = (props) => {
 
                 <div className="answers-wrap row">
                     <div className="col-4 text-center">
-                        <button className="interaction-option-button" value="0">Option 1</button>
+                        <button className="interaction-option-button" value="0" onClick={(e) => {props.dispatch(incrementAnimationSequence());}}>Option 1</button>
                     </div>
                     <div className="col-4 text-center">
-                        <button className="interaction-option-button" value="0">Option 2</button>
+                        <button className="interaction-option-button" value="0" onClick={(e) => {props.animate()}}>Option 2</button>
                     </div>
                     <div className="col-4 text-center">
                         <button className="interaction-option-button" value="0">Option 3</button>

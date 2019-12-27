@@ -89,14 +89,94 @@ const scenarios = [{
 
 
 export const coordinates = [{
-    sequenceOne: [45, -1133],
-    sequenceTwo: [-207, -1133],
-    sequenceThree: [-207, -522],
-    sequenceFour: [-207, 134],
-    sequenceFive: [-458, -1333],
-    sequenceSix: [-458, -522],
-    sequenceSeven: [-458, 134],
-    sequenceEight: [-1192, -1133],
-    sequenceNine: [-1407, -655],
+    rightStart: [-1133],
+    sequenceOne: [34, -1133],
+    sequenceTwo: [-200, -1133],
+    sequenceThree: [-207, -499],
+    sequenceFour: [-207, 154],
+    sequenceFive: [-359, -1133],
+    sequenceSix: [-494, -495],
+    firstRowTopStand: [-200],
+    firstRowWalk: [-236],
+    firstRowLeftOne: [-499],
+    firstRowLeftTwo: [154],
+    firstRowReturnTop: [-359],
+    secondRowTopStand: [-441],
+    secondRowLeftOne: [-499],
+    secondRowLeftTwo: [154],
+    secondRowWalk: [-489],
+    secondRowReturnTop: [-606],
+    thirdRowTopStand: [-694],
+
+    endLeft1:[492],
+    endTop1:[-1080],
+    endLeft2:[-1133],
+    endTop2:[-1175],
+
+    finishTop1:[-1211],
+    finishLeft1:[-628],
+    finishTop2:[-1408],
+
 }]
 
+export const firstStep = {
+    top: 34
+}
+export const secondStep = {
+    top: -200
+}
+
+export const rowOne = {
+    topStand: -200,
+    topWalk: -236,
+    topNextRow: -359,
+    leftStart: -1133,
+    leftOne: -499,
+    leftTwo: 154
+}
+
+export const rowTwo = {
+    topStand: -441,
+    topWalk: -481,
+    topNextRow: -606,
+    leftStart: -1133,
+    leftOne: -499,
+    leftTwo: 154
+}
+
+export const rowThree = {
+    topStand: -689,
+    topWalk: -731,
+    topNextRow: -606,
+    leftStart: -1133,
+    leftOne: -499,
+    leftTwo: 154
+}
+
+export const scenarioOneEndRoute = {
+    endLeft1:[492],
+    endTop1:[-1080],
+    endLeft2:[-1133],
+    endTop2:[-1175],
+
+    finishTop1:[-1211],
+    finishLeft1:[-628],
+    finishTop2:[-1408]
+}
+
+export const scenarioTwoEndRoute = {
+    endTop1:[-936],
+    endTop2:[-1169],
+    endTop3:[-1409]
+}
+
+export const scenarioThreeEndRoute = {
+    endLeft1:[492],
+    endTop1:[-1080],
+    endLeft2:[-1133],
+    endTop2:[-1175],
+
+    finishTop1:[-1211],
+    finishLeft1:[-628],
+    finishTop2:[-1408]
+}

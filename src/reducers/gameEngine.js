@@ -1,6 +1,6 @@
 const gameEngineDefault = {
     gameState: 'splash',
-    currentScenario: 1,
+    currentScenario: 4,
     showHelpScreen: false,
     gameScenarios: [1, 2, 3, 4],
     playedScenarios: [],
@@ -34,9 +34,12 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 gameScenarios: scenarioBank,
                 currentScenario: action.scenario,
                 playedScenarios:  state.playedScenarios.concat(action.scenario)
-
-
             };
+        case 'INCREMENT_ANIMATION_SEQUENCE':
+            return {
+                ...state,
+                animationSequenceNumber: ++state.animationSequenceNumber
+            }
 
 
         default:

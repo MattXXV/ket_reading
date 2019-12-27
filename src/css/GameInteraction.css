@@ -35,3 +35,9 @@
     font-size: 16px;
     color: white;
 }
+
+.test-bttn-wrap {
+    position: absolute;
+    top: 0;
+    padding: 5px 10px;
+}
