@@ -8,6 +8,7 @@ import Background from './components/Background';
 import OptionsBar from './components/OptionsBar';
 import HelpScreen from './components/HelpScreen';
 import GameInteraction from './components/GameInteraction';
+import MiniChart from './components/MiniChart'
 
 
 
@@ -18,7 +19,8 @@ function App(props) {
             {props.gameState === 'splash' && <SplashScreen dispatch={props.dispatch}/>}
             {props.gameState === 'scenario' && props.showHelpScreen === false && <ScenarioIntro/>}
             {props.gameState === 'game' && <GameInteraction/>}
-            {props.showHelpScreen === true && <HelpScreen/>}
+            {props.showHelpScreen === true && <MiniChart/>}
+            {/*{props.showHelpScreen === true && <HelpScreen/>}*/}
             {props.gameState !== 'splash' && <OptionsBar/>}
 
         </div>

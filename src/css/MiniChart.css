@@ -1,0 +1,182 @@
+.chart-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.map-cover {
+    position: absolute;
+    width: 960px;
+    height: 540px;
+    background-color: #0C7EA6;
+    opacity: 0.7;
+}
+
+.map-container {
+    position: absolute;
+    top: 62px;
+    left: 184px;
+}
+
+.rectangle-highlight {
+    width: 131px;
+    position: absolute;
+    top: 55px;
+    height: 43px;
+    left: 505px;
+    background: purple;
+    opacity: 0;
+}
+
+.diamond-highlight {
+    width: 143px;
+    position: absolute;
+    top: 162px;
+    height: 50px;
+    left: 499px;
+    background: purple;
+    clip-path: polygon(50% 0, 50% 0, 100% 50%, 100% 50%, 50% 100%, 50% 100%, 0 50%, 0 50%);
+    -webkit-clip-path: polygon(50% 0, 50% 0, 100% 50%, 100% 50%, 50% 100%, 50% 100%, 0 50%, 0 50%);
+    opacity: 0;
+}
+
+.diamond-one {
+    left: 499px;
+    top: 162px;
+}
+.diamond-two {
+    left: 195px;
+    top: 162px;
+}
+.diamond-three {
+    left: 499px;
+    top: 221px;
+}
+.diamond-four {
+    left: 195px;
+    top: 221px;
+}
+.diamond-five {
+    left: 499px;
+    top: 280px;
+}
+.diamond-six {
+    left: 195px;
+    top: 280px;
+}
+.diamond-seven {
+    left: 499px;
+    top: 392px;
+}
+
+.rectangle-one {
+    left: 505px;
+    top: 55px;
+}
+.rectangle-two {
+    left: 505px;
+    top: 109px;
+}
+.rectangle-three {
+    left: 354px;
+    top: 166px;
+}
+.rectangle-four {
+    left: 354px;
+    top: 225px;
+}
+.rectangle-five {
+    left: 354px;
+    top: 283px;
+}
+.rectangle-six {
+    left: 505px;
+    top: 339px;
+}
+.rectangle-seven {
+    left: 384px;
+    top: 451px;
+}
+.rectangle-eight {
+    left: 505px;
+    top: 450px;
+}
+.rectangle-nine {
+    left: 625px;
+    top: 450px;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.mini-char-wrap {
+    display: table;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+.spot-1 {
+    top: 50px;
+    left: 559px;
+}
+.spot-2 {
+    top: 99px;
+    left: 559px;
+}
+.spot-3 {
+    top: 155px;
+    left: 559px;
+}
+.spot-4 {
+    top: 155px;
+    left: 405px;
+}
+.spot-5 {
+    top: 155px;
+    left: 252px;
+}
+.spot-6 {
+    top: 215px;
+    left: 559px;
+}
+.spot-7 {
+    top: 215px;
+    left: 405px;
+}
+.spot-8 {
+    top: 215px;
+    left: 252px;
+}
+.spot-9 {
+    top: 274px;
+    left: 559px;
+}
+.spot-10 {
+    top: 274px;
+    left: 406px;
+}
+.spot-11 {
+    top: 274px;
+    left: 252px;
+}
+.spot-12 {
+    top: 329px;
+    left: 559px;
+}
+.spot-13 {
+    top: 383px;
+    left: 559px;
+}
+.spot-14 {
+    top: 434px;
+    left: 437px;
+}
+.spot-15 {
+    top: 434px;
+    left: 559px;
+}
+.spot-16 {
+    top: 434px;
+    left: 677px;
+}
