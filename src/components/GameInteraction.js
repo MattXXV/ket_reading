@@ -4,6 +4,7 @@ import connect from "react-redux/es/connect/connect";
 import Scenario from '../utils/ScenarioClass';
 import '../css/GameInteraction.css';
 import { TweenLite, TimelineLite, CSSPlugin } from "gsap/all";
+import {setUserFeedback, setIsCorrect, showQuestionBox, incrementAnimationSequence} from "../actions/gameEngine";
 import flowChart1 from '../images/flowchart-full-1.png';
 import flowChart2 from '../images/flowchart-full-2.png';
 import flowChart3 from '../images/flowchart-full-3.png';
@@ -20,6 +21,8 @@ const GameInteraction = (props) => {
     let scenario;
     // setting component organic states
     const [responseMenu, setResponseMenu] = useState(false);
+    // const [showQuestion, setShowQuestion] = useState(false);
+    // const [showFeedback, setShowFeedback] = useState(false);
     // defining our animated assets
     const responseWrap = useRef([]);
     const gameChart = useRef([]);
@@ -28,20 +31,20 @@ const GameInteraction = (props) => {
 
     // Setting game scenario number 1 -4
     const loadScenario = () => {
-        scenario = new Scenario(4, gameChart.current[0], null, props );
+        scenario = new Scenario(1, gameChart.current[0], char.current[0], props );
         // scenario.animateChart(props.animationSequenceNumber);
         scenario.pickScenario();
-        // TweenLite.set(char.current[0], {className:"character-wrap walking"})
-        // TweenLite.to(char.current[0], 2 , {top: 235})
-        // TweenLite.set(char.current[0], {delay: 2, className:"character-wrap"})
-
-        firstEntry(gameChart.current[0], char.current[0])
-
+        scenario.loadQuestion();
+        firstEntry(gameChart.current[0], char.current[0]);
+        // scenario.animateChart(props.animationSequenceNumber);
     }
 
     const animateBG = () => {
         scenario = new Scenario(4, gameChart.current[0], char.current[0], props );
+        scenario.loadQuestion();
         scenario.animateChart(props.animationSequenceNumber);
+        // props.dispatch(showQuestionBox(true))
+
     }
     // scenario.pickScenario(1);
     // Toggles custom response menu on right side of screen
@@ -55,17 +58,27 @@ const GameInteraction = (props) => {
         }
     }
 
+    const loadNextQuestion = () => {
+        scenario = new Scenario(1, gameChart.current[0], null, props );
+
+    }
+
+
     useEffect(() => {
         // animateBG(gameChart.current[0]);
-        loadScenario()
+        loadScenario();
     }, [])
+
+    useEffect(() => {
+        loadNextQuestion();
+    }, [props.animationSequenceNumber])
     return (
         <div className="game-interaction-wrap">
             <div className="game-scenario-bg" ref={element => {gameChart.current[0] = element;}}>
-                {props.currentScenario === 1 && <img src={flowChart1}/>}
-                {props.currentScenario === 2 && <img src={flowChart2}/>}
-                {props.currentScenario === 3 && <img src={flowChart3}/>}
-                {props.currentScenario === 4 && <img src={flowChart4}/>}
+                {props.currentScenario === 1 && <img src={flowChart1} alt="Scenario background."/>}
+                {props.currentScenario === 2 && <img src={flowChart2} alt="Scenario background."/>}
+                {props.currentScenario === 3 && <img src={flowChart3} alt="Scenario background."/>}
+                {props.currentScenario === 4 && <img src={flowChart4} alt="Scenario background."/>}
 
             </div>
 
@@ -86,8 +99,12 @@ const GameInteraction = (props) => {
             <div className="character-wrap" ref={element => {char.current[0] = element}}>
                 <ChartCharacter/>
             </div>
+            {props.showQuestion === true  &&
+            <InteractionBox animate={animateBG}
 
-            <InteractionBox animate={animateBG}/>
+
+            />
+            }
         </div>
     )
 }
@@ -96,7 +113,11 @@ function mapStateToProps(state) {
     return {
         ...state,
         gameState: state.gameState,
-        currentScenario: state.currentScenario
+        currentScenario: state.currentScenario,
+        currentAnswerChoices: state.currentAnswerChoices,
+        showQuestion: state.showQuestion,
+        showFeedback: state.showFeedback,
+        animationSequenceNumber: state.animationSequenceNumber
     };
 }
 

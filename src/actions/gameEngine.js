@@ -17,6 +17,31 @@ export const loadScenario = (scenario) => ({
     scenario
 })
 
+
 export const incrementAnimationSequence = () => ({
     type: 'INCREMENT_ANIMATION_SEQUENCE'
+})
+
+export const loadCurrentQuestionData = () => ({
+    type: 'LOAD_CURRENT QUESTION_DATA'
+})
+
+export const setUserFeedback = (feedback) => ({
+    type: 'SET_USER_FEEDBACK',
+    feedback
+})
+
+export const setIsCorrect = (correctFlag) => ({
+    type: 'SET_IS_CORRECT',
+    correctFlag
+})
+
+export const showQuestionBox = (flag) => ({
+    type: 'SHOW_QUESTION',
+    flag
+})
+
+export const showFeedbackBox = (flag) => ({
+    type: 'SHOW_FEEDBACK',
+    flag
 })

@@ -5,17 +5,18 @@ import miniChart1 from '../images/mini-chart-1.png';
 import miniChart2 from '../images/mini-chart-2.png';
 import miniChart3 from '../images/mini-chart-3.png';
 import miniChart4 from '../images/mini-chart-4.png';
-import miniChar from '../images/mini-char.png'
+import miniCharacter from '../images/mini-char.png'
 import '../css/MiniChart.css';
 
 const C = CSSPlugin;
 
 const MiniChart = (props) => {
-
+   // Assets changed by Greensock animation library
     const diamond = useRef([]);
     const rectangle = useRef([]);
     const character = useRef([]);
 
+    // Set's the character position on the mini chart. Chart has 1 - 16 positions. The param spot represent these positions
     const setCharacter = (spot) => {
         switch(spot) {
             case 1:
@@ -68,6 +69,8 @@ const MiniChart = (props) => {
                 break;
         }
     }
+
+    // Highlights the current position on the minichart where the user is in the game
     const setChart = (shape, position) => {
         switch(props.animationSequenceNumber) {
             case 0:
@@ -251,7 +254,7 @@ const MiniChart = (props) => {
             </div>
 
             <div className="mini-char-wrap spot-1" ref={element => {character.current[0] = element}}>
-                <img src={miniChar} />
+                <img src={miniCharacter} />
             </div>
 
 

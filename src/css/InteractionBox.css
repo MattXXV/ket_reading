@@ -5,6 +5,7 @@
     height: 165px;
     background: #c5c4c9;
     padding-top: 20px;
+    opacity: 0;
 }
 
 .questionHolder {
@@ -14,6 +15,15 @@
 .question-text {
     text-align: center;
     color: #0C7EA6;
+}
+
+.answers-wrap {
+    width: fit-content;
+    margin: auto;
+}
+
+.answer-option {
+    padding: 0 15px;
 }
 
 .interaction-option-button {
@@ -27,6 +37,13 @@
 
 .feedback-container  {
     display: none;
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    text-align: center;
+    top: 20%;
+    transform: translateX(-46%);
+    width: 600px;
 }
 
 .feedback-container p {

@@ -39,9 +39,6 @@ export const characterPosition = ( character, direction = 'facedown', delay = 0)
             TweenLite.set(character, {className:"character-wrap walking"})
         }, delay)
     }
-
-
-    // TweenLite.to(character, 2, {delay: 0.5, top: 215});
 }
 
 
@@ -65,5 +62,4 @@ export const characterStop = (character, delay ,direction = "down") => {
            TweenLite.set(character, {className: "character-wrap faceright"})
        }, delay)
     }
-
 }
