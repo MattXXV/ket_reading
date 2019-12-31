@@ -13,3 +13,9 @@
     width: 220px !important;
     color: #ffffff;
 }
+
+.end-employee-wrap {
+    position: absolute;
+    top: -197px;
+    left: -304px;
+}

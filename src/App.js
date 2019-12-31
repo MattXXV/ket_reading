@@ -21,11 +21,10 @@ function App(props) {
             {props.gameState === 'splash' && <SplashScreen dispatch={props.dispatch}/>}
             {props.gameState === 'scenario' && props.showHelpScreen === false && <ScenarioIntro/>}
             {props.gameState === 'game' && <GameInteraction/>}
-            {/*{props.showHelpScreen === true && <MiniChart/>}*/}
-            {/*/!*{props.showHelpScreen === true && <HelpScreen/>}*!/*/}
-            {props.gameState !== 'splash' && <OptionsBar/>}
             {props.gameState === 'end' && <EndScreen/>}
-
+            {props.showMiniChart === true && <MiniChart/>}
+            {props.showHelpScreen === true && <HelpScreen/>}
+            {props.gameState !== 'splash' && <OptionsBar/>}
         </div>
   );
 }
@@ -33,7 +32,8 @@ function App(props) {
 function mapStateToProps(state) {
     return {
         gameState: state.gameState,
-        showHelpScreen: state.showHelpScreen
+        showHelpScreen: state.showHelpScreen,
+        showMiniChart: state.showMiniChart
         // showHelp: state.showHelp,
         // showMap: state.showMap,
         // showCalc: state.showCalc,

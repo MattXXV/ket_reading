@@ -1,13 +1,11 @@
-import { TweenLite, TimelineLite, CSSPlugin } from "gsap/all";
+import { TweenLite, CSSPlugin } from "gsap/all";
 import {setEmployeeConversation} from '../actions/gameEngine'
 
-import flowChart1 from '../images/flowchart-full-1.png';
-import Scenario from '../utils/ScenarioClass';
 const C = CSSPlugin;
 
 export const firstEntry = (bg, character) => {
     TweenLite.set(character, {className:"character-wrap walking"})
-    TweenLite.to(character, 2.5 , {top: 235})
+    TweenLite.to(character, 2.5 , {top: 198})
     TweenLite.set(character, {delay: 2.5, className:"character-wrap"})
 }
 

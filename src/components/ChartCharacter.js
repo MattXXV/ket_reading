@@ -1,6 +1,5 @@
 import React from 'react';
 
-import character from '../images/character-spritesheet.png';
 import '../css/ChartCharacter.css';
 import connect from "react-redux/es/connect/connect";
 

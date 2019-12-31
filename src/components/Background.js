@@ -2,7 +2,6 @@ import React from 'react';
 import connect from "react-redux/es/connect/connect";
 
 import '../css/Background.css';
-import character from '../images/jake.png';
 
 import splash_bg from '../images/it-bg.jpg';
 
@@ -16,7 +15,7 @@ const Background = ({gameState}) => {
                     {/*<img src={character}/>*/}
                 </div>
                 }
-                {gameState !== 'splash' && <img src={splash_bg}/> }
+                {gameState !== 'splash' && <img src={splash_bg} alt="Background"/> }
             </div>
         </div>
     )

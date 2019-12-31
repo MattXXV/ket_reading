@@ -1,20 +1,14 @@
 import React, {useRef, useEffect} from 'react';
 import {connect} from 'react-redux';
-import { TweenLite, TimelineLite, CSSPlugin } from "gsap/all";
-import Scenario from '../utils/ScenarioClass';
-import {incrementAnimationSequence, setIsCorrect, setUserFeedback, showFeedbackBox, showQuestionBox, setEmployeeConversation} from "../actions/gameEngine";
+import { TweenLite } from "gsap/all";
+import { setIsCorrect, setUserFeedback, showFeedbackBox, showQuestionBox, setEmployeeConversation} from "../actions/gameEngine";
 import '../css/InteractionBox.css';
 
-const C = CSSPlugin;
 
 const InteractionBox = (props) => {
     const interactionWrap = useRef([]);
     const questionWrap = useRef([]);
     const feedbackWrap = useRef([]);
-
-    const animateGame = () => {
-
-    }
 
     const showQuestionText = () => {
         if(props.showQuestion === true) {

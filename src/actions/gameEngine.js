@@ -55,3 +55,11 @@ export const setEmployeeConversation = (flag) => ({
     type: 'EMPLOYEE_CONVERSATION',
     flag
 })
+
+export const showMiniChart = () => ({
+    type: 'SHOW_MINICHART',
+})
+
+export const resetAnimationNumber = () => ({
+    type: 'SET_SCENARIO_SEQUENCE_LENGTH',
+})

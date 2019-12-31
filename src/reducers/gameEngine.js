@@ -5,8 +5,8 @@ const gameEngineDefault = {
     gameState: 'splash',
     currentScenario: 1,
     showHelpScreen: false,
-    gameScenarios: [4],
-    playedScenarios: [2,3,1],
+    gameScenarios: [1,2,3,4],
+    playedScenarios: [],
     animationSequenceNumber: 0,
     currentQuestion: '',
     currentAnswerChoices: [],
@@ -14,6 +14,7 @@ const gameEngineDefault = {
     employeeResponse: null,
     customerResponse: null,
     correctValue: 0,
+    showMiniChart: false,
     scenarioSequenceLength: 0,
     employeeConversationComplete: false,
     userSelectedAnswerFeedback: '',
@@ -303,6 +304,11 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 ...state,
                 showQuestion: action.flag
             };
+        case "SHOW_MINICHART":
+            return {
+                ...state,
+                showMiniChart: !state.showMiniChart
+            };
         case "SHOW_FEEDBACK":
             return {
                 ...state,
@@ -318,6 +324,11 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
             return {
                 ...state,
                 employeeConversationComplete: action.flag
+            };
+        case "RESET_ANIMATION_NUMBER":
+            return {
+                ...state,
+                animationSequenceNumber: 0
             };
 
 

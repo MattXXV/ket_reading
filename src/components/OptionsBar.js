@@ -1,14 +1,14 @@
 import React from "react";
 import '../css/OptionsBar.css'
 import connect from "react-redux/es/connect/connect";
-import {toggleHelpScreen} from '../actions/gameEngine';
+import {toggleHelpScreen, showMiniChart} from '../actions/gameEngine';
 
 
 const OptionsBar = ({dispatch}) => {
 
     return (
         <div className="app-ui-button-box">
-            <button className="app-ui-map-button"></button>
+            <button className="app-ui-map-button" onClick={(e) => {dispatch(showMiniChart())}}></button>
             <button className="app-ui-help-button" onClick={(e) => {dispatch(toggleHelpScreen())}}></button>
 
         </div>

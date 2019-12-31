@@ -2,10 +2,10 @@ import React from 'react';
 
 import congratulations from '../images/congratulations.png';
 import connect from "react-redux/es/connect/connect";
-import Scenario from '../utils/ScenarioClass';
-
 import '../css/EndScreen.css';
 import {changeGameState, resetScenarios} from "../actions/gameEngine";
+import employee_end from "../images/character-with-headset.png";
+
 
 
 
@@ -23,8 +23,10 @@ const EndScreen = (props) => {
 
     return (
         <div className="end-screen-wrapper">
-            <div className="end-screen-employee">
-                {/*<Character />*/}
+            <div className="end-employee-wrap">
+                <div className="employee-image">
+                    <img className="talking"  src={employee_end} alt="Employee talking."/>
+                </div>
             </div>
             <div className="end-screen-congratulations">
                 <div className="row justify-content-center">

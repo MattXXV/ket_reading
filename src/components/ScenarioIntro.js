@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {connect} from 'react-redux'
 
 import blue_dialog_box from '../images/blue-dialog-box.png';
 import Scenario from '../utils/ScenarioClass';
+import employee_scenario_start from "../images/jake.png";
 import '../css/ScenarioIntro.css';
-import {changeGameState, resetScenarios} from "../actions/gameEngine";
+import {changeGameState, resetAnimationNumber} from "../actions/gameEngine";
 
 const ScenarioIntro = (props) => {
 
@@ -24,8 +25,17 @@ const ScenarioIntro = (props) => {
         props.dispatch(changeGameState('game'));
     }
 
+    useEffect(() => {
+        props.dispatch(resetAnimationNumber());
+    })
+
     return (
         <div>
+            <div className="intro-employee-wrap">
+                <div className="employee-image">
+                    <img className="talking"  src={employee_scenario_start} alt="Employee talking."/>
+                </div>
+            </div>
             <div className="position-absolute intro-container">
                 <div className="scenario-text-bg">
                 <img src={blue_dialog_box} alt="Blue Dialog Box" />

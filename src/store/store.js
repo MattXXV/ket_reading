@@ -1,4 +1,4 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore } from 'redux';
 import gameEngineReducer from '../reducers/gameEngine';
 // import filtersReducer from '../reducers/filters';
 

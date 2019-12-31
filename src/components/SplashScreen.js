@@ -1,15 +1,15 @@
 import React, {useRef, useEffect}  from 'react';
 import { connect } from 'react-redux';
-import { TweenLite, TimelineLite, CSSPlugin } from "gsap/all";
+import { TweenLite, TimelineLite } from "gsap/all";
 import {changeGameState} from '../actions/gameEngine'
-// import CSSPlugin from 'gsap/CSSPlugin';
+import employee_splash from "../images/character-with-headset.png";
 
 import splash_working_title from '../images/working-title-long.png';
 
 
 import '../css/SplashScreen.css'
 
-const C = CSSPlugin;
+// const C = CSSPlugin;
 
 const SplashScreen = (props) => {
     const splashScreen = useRef([]);
@@ -17,12 +17,15 @@ const SplashScreen = (props) => {
     const splashKETlogo = useRef([]);
     const splashTitleWindow = useRef([]);
     const splashTitle = useRef([]);
+    const character = useRef([]);
+
 
     const animateSplashScreen = () => {
         const myTween = new TimelineLite({pause:true});
 
         // this.myTween.add( TweenLite.from(this.myTruck, 1, {x:-1200}), 0);
         myTween.add( TweenLite.to(splashTitle.current, 0.5, {autoAlpha:1}), 0.5);
+        TweenLite.to(character.current[0], 0.5, {delay: 0.5, left:138})
     }
 
     useEffect(() => {
@@ -42,11 +45,6 @@ const SplashScreen = (props) => {
         <div className="splash-wi-logo" ref={element => {splashWIlogo.current[0] = element;}}></div>
         <div className="splash-ket-logo" ref={element => {splashKETlogo.current[0] = element;}}></div>
         <div className="splash-title-window" ref={element => {splashTitleWindow.current[0] = element;}}>
-            {/*<div className="splash-truck" ref={div => {*/}
-                {/*this.myTruck = div*/}
-            {/*}}>*/}
-                {/*<ShippingTruck/>*/}
-            {/*</div>*/}
             <div className="splash-title" ref={element => {splashTitle.current[0] = element}}>
                 <div className="row justify-content-center">
                     <div className="col-12 text-center">
@@ -57,6 +55,10 @@ const SplashScreen = (props) => {
                     <div className="col-12 text-right">
                         <button className="splash-play-button" onClick={(e) => {props.dispatch(changeGameState('scenario'))}}>Play</button>
                     </div>
+                </div>
+
+                <div className="splash-character" ref={element => {character.current[0] = element }}>
+                    <img src={employee_splash} alt="Intro character."/>
                 </div>
             </div>
         </div>

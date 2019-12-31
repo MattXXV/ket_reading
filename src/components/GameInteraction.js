@@ -1,14 +1,9 @@
 import React, {useRef, useState, useEffect} from 'react'
 import connect from "react-redux/es/connect/connect";
-// import {scenario} from '../utils/gameAnimations';
 import Scenario from '../utils/ScenarioClass';
 import '../css/GameInteraction.css';
-import { TweenLite, TimelineLite, CSSPlugin } from "gsap/all";
+import { TweenLite} from "gsap/all";
 import {
-    setUserFeedback,
-    setIsCorrect,
-    showQuestionBox,
-    incrementAnimationSequence,
     changeGameState
 } from "../actions/gameEngine";
 import flowChart1 from '../images/flowchart-full-1.png';
@@ -17,7 +12,6 @@ import flowChart3 from '../images/flowchart-full-3.png';
 import flowChart4 from '../images/flowchart-full-4.png';
 import ChartCharacter from './ChartCharacter';
 import InteractionBox from './InteractionBox';
-import EmployeeCustomer from './EmployeeCustomer';
 
 
 import employee from '../images/character-with-headset.png';
@@ -28,9 +22,6 @@ import customerBG from '../images/customer-circle.png';
 import customerSpeechBubble from '../images/customer-bubble-02.png';
 import '../css/EmployeeCustomer.css';
 
-import {firstEntry} from '../utils/gameAnimations'
-
-const C = CSSPlugin;
 
 const GameInteraction = (props) => {
 
@@ -61,12 +52,6 @@ const GameInteraction = (props) => {
         setTimeout(() => {
             animateBG();
         }, 3000)
-
-
-
-        // scenario.loadQuestion();
-
-        // scenario.animateChart(-1);
     }
 
     const animateBG = () => {
@@ -77,8 +62,6 @@ const GameInteraction = (props) => {
                 scenario.loadQuestion();
             }, 500)
 
-        } else {
-            props.dispatch(changeGameState('end'));
         }
 
     }
@@ -94,19 +77,12 @@ const GameInteraction = (props) => {
         }
     }
 
-    const loadNextQuestion = () => {
-        scenario = new Scenario(1, gameChart.current[0], null, props );
-
-    }
-
 
     useEffect(() => {
         loadScenario();
     }, [])
 
-    // useEffect(() => {
-    //     loadNextQuestion();
-    // }, [props.animationSequenceNumber])
+
     return (
         <div className="game-interaction-wrap">
             <div className="game-scenario-bg" ref={element => {gameChart.current[0] = element;}}>
@@ -179,9 +155,9 @@ const GameInteraction = (props) => {
 
             </div>
 
-            <div className="test-bttn-wrap">
-                <button onClick={(e) => {animateBG()}}>Animation test</button>
-            </div>
+            {/*<div className="test-bttn-wrap">*/}
+                {/*<button onClick={(e) => {animateBG()}}>Animation test</button>*/}
+            {/*</div>*/}
 
         </div>
     )

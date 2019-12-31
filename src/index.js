@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {connect, Provider} from 'react-redux';
+import { Provider} from 'react-redux';
 import configureStore from './store/store.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import App from './App';
@@ -11,7 +11,7 @@ const store = configureStore();
 store.subscribe(() => {
     const state = store.getState();
     // const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-    console.log(store.getState());
+    console.log(state);
 
 })
 
