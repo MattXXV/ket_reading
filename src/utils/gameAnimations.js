@@ -63,3 +63,44 @@ export const characterStop = (character, delay ,direction = "down") => {
        }, delay)
     }
 }
+
+export const showEmployee = (mainWrap, employeeWrap, customerWrap) => {
+    TweenLite.set(mainWrap, {display: 'block'})
+    TweenLite.set(customerWrap, {opacity: 0})
+    TweenLite.to(mainWrap, 0.75, {opacity: 1});
+    TweenLite.to(employeeWrap, 0.75, {opacity: 1});
+    console.log('employee show')
+}
+
+export const showEmployeeStanding = (mainWrap, employeeWrap, customerWrap) => {
+    TweenLite.set(mainWrap, {display: 'block'})
+    TweenLite.set(customerWrap, {opacity: 0})
+    TweenLite.to(mainWrap, 0.75, {opacity: 1});
+    TweenLite.to(employeeWrap, 0.75, {opacity: 1});
+    console.log('employee show')
+}
+
+export const showCustomer = (mainWrap, employeeWrap, customerWrap) => {
+    TweenLite.set(mainWrap, {display: 'block'})
+    // TweenLite.set(employeeWrap, {opacity: 0})
+    TweenLite.to(mainWrap, 0.75, {opacity: 1});
+    TweenLite.to(customerWrap, 0.75, {opacity: 1});
+    console.log('customer show')
+}
+
+export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, who, speechBubble = true) => {
+    switch(who) {
+        case 'both':
+            showEmployee(mainWrap, employeeWrap, customerWrap);
+            setTimeout(() => {
+                showCustomer(mainWrap, employeeWrap, customerWrap);
+            }, 2000)
+            break;
+        case 'employee':
+            showEmployee(mainWrap, employeeWrap, customerWrap);
+            break;
+        case 'customer':
+            showCustomer(mainWrap, employeeWrap, customerWrap);
+            break;
+    }
+}

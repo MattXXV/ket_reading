@@ -122,6 +122,8 @@ const gameEngineDefault = {
     currentQuestion: '',
     currentAnswerChoices: [],
     answerFeedback: [],
+    employeeResponse: null,
+    customerResponse: null,
     correctValue: 0,
     scenarioSequenceLength: 0,
     userSelectedAnswerFeedback: '',
@@ -318,9 +320,6 @@ const gameEngineDefault = {
             answerKey:
                 [0,0,0,0,2,1]
         }
-
-
-
     ]
 
 }
@@ -354,12 +353,9 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 playedScenarios:  state.playedScenarios.concat(action.scenario)
             };
         case 'INCREMENT_ANIMATION_SEQUENCE':
-            if(state.animationSequenceNumber === 'start') {
-                state.animationSequenceNumber = -1;
-            }
             return {
                 ...state,
-                animationSequenceNumber: ++state.animationSequenceNumber
+                animationSequenceNumber: state.animationSequenceNumber + 1
             };
         case 'LOAD_CURRENT QUESTION_DATA':
             return {
@@ -367,7 +363,9 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 currentQuestion: state.dataBank[state.currentScenario].questions[state.animationSequenceNumber],
                 currentAnswerChoices: state.dataBank[state.currentScenario].answerChoices[state.animationSequenceNumber],
                 answerFeedback: state.dataBank[state.currentScenario].answerFeedback[state.animationSequenceNumber],
-                correctValue: state.dataBank[state.currentScenario].answerKey[state.animationSequenceNumber]
+                correctValue: state.dataBank[state.currentScenario].answerKey[state.animationSequenceNumber],
+                customerResponse: state.dataBank[state.currentScenario].customerResponse[state.animationSequenceNumber],
+                employeeResponse: state.dataBank[state.currentScenario].questions[state.animationSequenceNumber],
                 // currentQuestion: 'one',
                 // currentAnswerChoices: 'two',
                 // answerFeedback: 'three',
@@ -392,6 +390,11 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
             return {
                 ...state,
                 showFeedback: action.flag
+            };
+        case "SET_SCENARIO_SEQUENCE_LENGTH":
+            return {
+                ...state,
+                scenarioSequenceLength: action.sequenceLength
             };
 
 

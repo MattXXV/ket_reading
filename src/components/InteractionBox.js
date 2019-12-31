@@ -17,7 +17,6 @@ const InteractionBox = (props) => {
             TweenLite.to(interactionWrap.current, 0.5, {opacity: 1});
             TweenLite.to(questionWrap.current, 0.5, {opacity: 1});
         }
-
     }
 
     const showFeedbackText = () => {
@@ -30,11 +29,13 @@ const InteractionBox = (props) => {
 
     const checkAnswer = (userAnswerValue) => {
         props.dispatch(setUserFeedback(props.answerFeedback[userAnswerValue]));
+
+
         if(userAnswerValue === props.correctValue) {
             props.dispatch(setIsCorrect(true));
             if(props.currentAnswerChoices.length === 1) {
                 props.dispatch(showQuestionBox(false));
-                TweenLite.to(interactionWrap.current, 0.5, {opacity: 0});
+                TweenLite.to(interactionWrap.current[0], 0.5, {opacity: 0});
                 props.dispatch(showFeedbackBox(false));
                 props.animate();
             } else {
@@ -49,14 +50,20 @@ const InteractionBox = (props) => {
     const tryAgain = () => {
         props.dispatch(showFeedbackBox(false));
         props.dispatch(showQuestionBox(true));
-        TweenLite.to(questionWrap.current, 0.5, {opacity: 1});
+        TweenLite.to(questionWrap.current[0], 0.5, {opacity: 1});
     }
 
     const continueButton = () => {
-        props.dispatch(showFeedbackBox(false));
-        props.dispatch(showQuestionBox(false));
-        TweenLite.to(interactionWrap.current, 0.5, {opacity: 0});
-        props.animate()
+
+            props.dispatch(showFeedbackBox(false));
+            props.dispatch(showQuestionBox(false));
+            // TweenLite.to(interactionWrap.current[0], 0.5, {opacity: 0});
+            TweenLite.to(props.interactionW.current[0], 0.5, {opacity: 0});
+            TweenLite.to(props.employeeW.current[0], 0.5, {opacity: 0});
+            TweenLite.to(props.customerW.current[0], 0.5, {opacity: 0});
+            props.animate()
+
+
     }
 
     useEffect(() => {
@@ -81,15 +88,9 @@ const InteractionBox = (props) => {
 
                             </p>
                     </div>
-
+                    {props.currentAnswerChoices !== undefined &&
                     <div className="answers-wrap row">
-                        {/*{props.animationSequenceNumber === 'start' &&*/}
-                        {/*<div className="text-center answer-option">*/}
-                            {/*<button id="option1" className="interaction-option-button" value="0" onClick={(e) => {*/}
-                                {/*continueButton();*/}
-                            {/*}}>Continue</button>*/}
-                        {/*</div>*/}
-                        {/*}*/}
+
                         {props.currentAnswerChoices.length > 0 &&
                         <div className="text-center answer-option">
                             <button id="option1" className="interaction-option-button" value="0" onClick={(e) => {
@@ -114,7 +115,9 @@ const InteractionBox = (props) => {
                             }}>{props.currentAnswerChoices[2]}</button>
                         </div>
                         }
+
                     </div>
+                    }
                 </div>
             }
 
@@ -126,10 +129,6 @@ const InteractionBox = (props) => {
                         {props.isCorrect === true && <button className="continue-button" onClick={continueButton}>Continue</button>}
                         {props.isCorrect === false && <button className="continue-button try-again" onClick={tryAgain}>Try again</button>}
                     </div>
-                    {/*<div className="incorrect-feedback">*/}
-                    {/*<p>The incorrect feedback</p>*/}
-                    {/*<button className="continue-button">Try again</button>*/}
-                    {/*</div>*/}
                 </div>
             }
         </div>
@@ -147,7 +146,9 @@ function mapStateToProps(state) {
         userSelectedAnswerFeedback: state.userSelectedAnswerFeedback,
         showQuestion: state.showQuestion,
         currentScenario: state.currentScenario,
-        dataBank: state.dataBank
+        dataBank: state.dataBank,
+        animationSequenceNumber: state.animationSequenceNumber,
+        scenarioSequenceLength: state.scenarioSequenceLength
 
     };
 }

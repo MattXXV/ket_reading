@@ -1,0 +1,84 @@
+.big-character-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.employee-wrap {
+    opacity: 0;
+}
+.employee-image {
+    position: absolute;
+    top: 83px;
+    left: 58px;
+}
+
+.employee-image img {
+    height: 450px;
+    width: auto;
+}
+
+.employee-speech-bubble {
+    position: absolute;
+    top: 21px;
+    left: 159px;
+}
+.employee-speech-bubble img {
+    width: 325px;
+    height: auto;
+}
+
+.employee-response {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    max-width: 315px;
+    color: #ffffff;
+}
+
+
+.customer-wrap {
+    /*display: none;*/
+    position: absolute;
+    left: 458px;
+    opacity: 0;
+}
+
+.customer-background {
+    position: absolute;
+    top: 156px;
+    left: 232px;
+}
+
+.customer-background img{
+
+}
+
+.customer-image {
+    position: absolute;
+    top: 198px;
+    left: 278px;
+}
+
+.customer-image img{
+
+}
+
+.customer-speech-bubble {
+    position: absolute;
+    top: 102px;
+    left: 31px;
+}
+
+.customer-speech-bubble img {
+    width: 345px;
+    height: auto;
+}
+
+.customer-response {
+    position: absolute;
+    top: -44%;
+    left: 0;
+    color: black;
+    max-width: 335px;
+}

@@ -45,3 +45,8 @@ export const showFeedbackBox = (flag) => ({
     type: 'SHOW_FEEDBACK',
     flag
 })
+
+export const setScenarioSequenceLength = (sequenceLength) => ({
+    type: 'SET_SCENARIO_SEQUENCE_LENGTH',
+    sequenceLength
+})

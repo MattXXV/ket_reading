@@ -1,0 +1,15 @@
+.end-screen-wrapper {
+    position: absolute;
+    top: 174px;
+    left: 365px;
+}
+
+.end-screen-continue-button {
+    background-color: #0C7EA6;
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px;
+    width: 220px !important;
+    color: #ffffff;
+}

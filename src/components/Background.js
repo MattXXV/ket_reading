@@ -13,7 +13,7 @@ const Background = ({gameState}) => {
             <div className="screen-bg">
                 {gameState !== 'splash' &&
                 <div className="scenario-char-wrap">
-                    <img src={character}/>
+                    {/*<img src={character}/>*/}
                 </div>
                 }
                 {gameState !== 'splash' && <img src={splash_bg}/> }
