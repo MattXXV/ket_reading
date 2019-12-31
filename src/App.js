@@ -34,10 +34,6 @@ function mapStateToProps(state) {
         gameState: state.gameState,
         showHelpScreen: state.showHelpScreen,
         showMiniChart: state.showMiniChart
-        // showHelp: state.showHelp,
-        // showMap: state.showMap,
-        // showCalc: state.showCalc,
-        // mapStep: state.mapStep
     };
 }
 
