@@ -50,3 +50,8 @@ export const setScenarioSequenceLength = (sequenceLength) => ({
     type: 'SET_SCENARIO_SEQUENCE_LENGTH',
     sequenceLength
 })
+
+export const setEmployeeConversation = (flag) => ({
+    type: 'EMPLOYEE_CONVERSATION',
+    flag
+})

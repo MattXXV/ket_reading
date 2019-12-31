@@ -5,13 +5,20 @@ import connect from "react-redux/es/connect/connect";
 import Scenario from '../utils/ScenarioClass';
 
 import '../css/EndScreen.css';
+import {changeGameState, resetScenarios} from "../actions/gameEngine";
 
 
 
 const EndScreen = (props) => {
 
     const playAgain = () => {
-        const scenario = new Scenario()
+        if( props.gameScenarios.length === 0) {
+            props.dispatch(resetScenarios());
+            props.dispatch(changeGameState('scenario'));
+        } else {
+            props.dispatch(changeGameState('scenario'));
+        }
+
     }
 
     return (
@@ -43,7 +50,8 @@ function mapStateToProps(state) {
         currentAnswerChoices: state.currentAnswerChoices,
         showQuestion: state.showQuestion,
         showFeedback: state.showFeedback,
-        animationSequenceNumber: state.animationSequenceNumber
+        animationSequenceNumber: state.animationSequenceNumber,
+        gameScenarios: state.gameScenarios
     };
 }
 

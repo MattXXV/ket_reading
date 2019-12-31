@@ -1,7 +1,8 @@
 import React, {useRef, useEffect} from 'react';
 import {connect} from 'react-redux';
 import { TweenLite, TimelineLite, CSSPlugin } from "gsap/all";
-import {incrementAnimationSequence, setIsCorrect, setUserFeedback, showFeedbackBox, showQuestionBox} from "../actions/gameEngine";
+import Scenario from '../utils/ScenarioClass';
+import {incrementAnimationSequence, setIsCorrect, setUserFeedback, showFeedbackBox, showQuestionBox, setEmployeeConversation} from "../actions/gameEngine";
 import '../css/InteractionBox.css';
 
 const C = CSSPlugin;
@@ -10,6 +11,10 @@ const InteractionBox = (props) => {
     const interactionWrap = useRef([]);
     const questionWrap = useRef([]);
     const feedbackWrap = useRef([]);
+
+    const animateGame = () => {
+
+    }
 
     const showQuestionText = () => {
         if(props.showQuestion === true) {
@@ -55,12 +60,13 @@ const InteractionBox = (props) => {
 
     const continueButton = () => {
 
-            props.dispatch(showFeedbackBox(false));
-            props.dispatch(showQuestionBox(false));
             // TweenLite.to(interactionWrap.current[0], 0.5, {opacity: 0});
-            TweenLite.to(props.interactionW.current[0], 0.5, {opacity: 0});
-            TweenLite.to(props.employeeW.current[0], 0.5, {opacity: 0});
-            TweenLite.to(props.customerW.current[0], 0.5, {opacity: 0});
+            TweenLite.to(props.interactionW.current[0], 0.2, {opacity: 0});
+            TweenLite.to(props.employeeW.current[0], 0.2, {opacity: 0});
+            TweenLite.to(props.customerW.current[0], 0.2, {opacity: 0});
+        props.dispatch(showFeedbackBox(false));
+        props.dispatch(showQuestionBox(false));
+        props.dispatch(setEmployeeConversation(false));
             props.animate()
 
 
@@ -78,7 +84,7 @@ const InteractionBox = (props) => {
 
     return (
         <div className="interaction-box" ref={element => {interactionWrap.current[0] = element;}}>
-            {props.showQuestion === true &&
+            {props.employeeConversationComplete === true &&
                 <div className="question-wrap" ref={element => {questionWrap.current[0] = element;}}>
                     <div className="questionHolder">
 
@@ -91,7 +97,13 @@ const InteractionBox = (props) => {
                     {props.currentAnswerChoices !== undefined &&
                     <div className="answers-wrap row">
 
-                        {props.currentAnswerChoices.length > 0 &&
+                        {props.currentAnswerChoices.length === 1 &&
+                        <div className="text-center answer-option">
+                            <button className="continue-button" onClick={continueButton}>Continue</button>
+                        </div>
+                        }
+
+                        {props.currentAnswerChoices.length > 1 &&
                         <div className="text-center answer-option">
                             <button id="option1" className="interaction-option-button" value="0" onClick={(e) => {
                                 const bttn = document.getElementById('option1');
@@ -148,7 +160,8 @@ function mapStateToProps(state) {
         currentScenario: state.currentScenario,
         dataBank: state.dataBank,
         animationSequenceNumber: state.animationSequenceNumber,
-        scenarioSequenceLength: state.scenarioSequenceLength
+        scenarioSequenceLength: state.scenarioSequenceLength,
+        employeeConversationComplete: state.employeeConversationComplete
 
     };
 }

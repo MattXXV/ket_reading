@@ -4,14 +4,23 @@ import {connect} from 'react-redux'
 import blue_dialog_box from '../images/blue-dialog-box.png';
 import Scenario from '../utils/ScenarioClass';
 import '../css/ScenarioIntro.css';
-import {changeGameState} from "../actions/gameEngine";
+import {changeGameState, resetScenarios} from "../actions/gameEngine";
 
 const ScenarioIntro = (props) => {
 
+    // const resetScenarios = new Promise(() => {
+    //     props.dispatch(resetScenarios());
+    // })
     const loadScenario = () => {
         const scenario = new Scenario(null, null, null, props);
+        // if(props.gameScenarios.length > 0) {
+        //     // scenario.pickScenario();
+        // } else {
+        //     props.dispatch(resetScenarios());
+        //
+        // }
         scenario.pickScenario();
-        scenario.loadQuestion();
+        // scenario.loadQuestion();
         props.dispatch(changeGameState('game'));
     }
 

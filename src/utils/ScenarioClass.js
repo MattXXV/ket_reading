@@ -1,12 +1,12 @@
 import { TweenLite, TimelineLite, CSSPlugin } from "gsap/all";
-import {changeGameState, incrementAnimationSequence, loadScenario, resetScenarios, loadCurrentQuestionData, showQuestionBox, setScenarioSequenceLength} from "../actions/gameEngine";
+import {changeGameState, incrementAnimationSequence, loadScenario, resetScenarios, loadCurrentQuestionData, showQuestionBox, setScenarioSequenceLength, setEmployeeConversation} from "../actions/gameEngine";
 import {firstStep, secondStep, rowOne, rowTwo, rowThree, scenarioOneEndRoute, scenarioTwoEndRoute, scenarioThreeEndRoute} from '../staticData/data';
 import {characterPosition, characterStop, firstEntry, animateEmployeeCustomer} from './gameAnimations';
 
 const C = CSSPlugin;
 
 class Scenario  {
-    constructor(scenario = undefined, background = undefined, character = undefined, store = {}, interactionWrap, employeeWrap, customerWrap) {
+    constructor(scenario = undefined, background = undefined, character = undefined, store = {}, interactionWrap, employeeWrap, customerWrap, employeeStanding) {
         this.scenario = scenario;
         this.background = background;
         this.character = character;
@@ -14,12 +14,15 @@ class Scenario  {
         this.interactionWrap = interactionWrap;
         this.employeeWrap = employeeWrap;
         this.customerWrap = customerWrap;
+        this.employeeStanding = employeeStanding;
     }
 
     pickScenario() {
-        const scenarioBank = this.store.gameScenarios.length;
-        if(scenarioBank > 0) {
-            let index = scenarioBank * Math.random();
+        const scenarioBankLength = this.store.gameScenarios.length;
+        if(scenarioBankLength === 0) {
+            this.store.dispatch(resetScenarios())
+        }
+            let index = scenarioBankLength * Math.random();
             index = Math.floor(index);
             this.store.dispatch(loadScenario(this.store.gameScenarios[index]));
             switch(this.store.currentScenario) {
@@ -36,9 +39,7 @@ class Scenario  {
                     this.store.dispatch(setScenarioSequenceLength(6));
                     break;
             }
-        } else {
-            this.store.dispatch(resetScenarios())
-        }
+
     }
 
     entryAnimation = () => {
@@ -48,7 +49,7 @@ class Scenario  {
     showQuestion = (personToAnimate) => {
         this.store.dispatch(showQuestionBox(true));
         this.store.dispatch(incrementAnimationSequence());
-     animateEmployeeCustomer(this.interactionWrap, this.employeeWrap, this.customerWrap, personToAnimate);
+     animateEmployeeCustomer(this.interactionWrap, this.employeeWrap, this.customerWrap, personToAnimate, this.store, this.employeeStanding);
     }
 
 
@@ -142,8 +143,7 @@ class Scenario  {
                     characterPosition(this.character, 'facedown', 8.5);
                     TweenLite.to(this.background, 1, { delay: 8.5, top: scenarioOneEndRoute.endTop2[0]});
                     characterStop(this.character, 9.5 );
-                    this.store.dispatch(incrementAnimationSequence());
-                    setTimeout(() => { this.store.dispatch(showQuestionBox(true))}, 9500);
+                    setTimeout(() => { this.showQuestion('employeeStanding')}, 9500);
                     break;
                 case 8:
                     characterPosition(this.character, 'facedown');
@@ -169,19 +169,25 @@ class Scenario  {
                     characterPosition(this.character, 'facedown')
                     TweenLite.to(this.background, 1.5, {top: firstStep.top});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('customer');
+                    }, 1500);
                     break;
                 case 1:
                     characterPosition(this.character, 'facedown')
                     TweenLite.to(this.background, 1.5, {top: secondStep.top});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 2:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: rowTwo.topStand});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 3:
                     characterPosition(this.character, 'facedown');
@@ -191,7 +197,9 @@ class Scenario  {
                     characterPosition(this.character, 'facedown', 3.5);
                     TweenLite.to(this.background, .5, {delay: 3.5, top:  rowTwo.topStand});
                     characterStop(this.character, 4 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('employee');
+                    }, 4000);
                     break;
                 case 4:
                     characterPosition(this.character, 'facedown');
@@ -201,7 +209,9 @@ class Scenario  {
                     characterPosition(this.character, 'facedown', 3.5);
                     TweenLite.to(this.background, .5, {delay: 3.5, top:  rowTwo.topStand});
                     characterStop(this.character, 4 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 4000);
                     break;
                 case 5:
                     characterPosition(this.character, 'facedown');
@@ -211,24 +221,33 @@ class Scenario  {
                     characterPosition(this.character, 'facedown', 5.5);
                     TweenLite.to(this.background, 0.5, {delay: 5.5, top: rowThree.topStand});
                     characterStop(this.character, 6 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 6000);
                     break;
                 case 6:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: scenarioTwoEndRoute.endTop1});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 7:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: scenarioTwoEndRoute.endTop2});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('employeeStanding');
+                    }, 1500);
                     break;
                 case 8:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: scenarioTwoEndRoute.endTop3});
                     characterStop(this.character, 1.5 );
+                    setTimeout(() => {
+                        this.store.dispatch(changeGameState('end'))
+                    }, 2500)
                     break;
             }
         }
@@ -239,25 +258,33 @@ class Scenario  {
                     characterPosition(this.character, 'facedown')
                     TweenLite.to(this.background, 1.5, {top: firstStep.top});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('customer');
+                    }, 1500);
                     break;
                 case 1:
                     characterPosition(this.character, 'facedown')
                     TweenLite.to(this.background, 1.5, {top: secondStep.top});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 2:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: rowTwo.topStand});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 3:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: rowThree.topStand});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());;
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 4:
                     characterPosition(this.character, 'facedown');
@@ -267,7 +294,9 @@ class Scenario  {
                     characterPosition(this.character, 'facedown', 3.5);
                     TweenLite.to(this.background, 1, {delay: 3.5, top:  rowThree.topStand});
                     characterStop(this.character, 4 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('employee');
+                    }, 4000);
                     break;
                 case 5:
                     characterPosition(this.character, 'facedown');
@@ -277,22 +306,26 @@ class Scenario  {
                     characterPosition(this.character, 'facedown', 3.5);
                     TweenLite.to(this.background, 0.5, {delay: 3.5, top:  rowThree.topStand});
                     characterStop(this.character, 4 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 4000);
                     break;
                 case 6:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 0.5, { top: rowThree.topWalk});
                     characterPosition(this.character, 'faceleft', 0.5);
-                    TweenLite.to(this.background, 2, { delay: 0.5, left: scenarioThreeEndRoute.endLeft1[0]});
-                    characterPosition(this.character, 'facedown', 2.5);
-                    TweenLite.to(this.background, 3, { delay: 2.5, top: scenarioThreeEndRoute.endTop1[0]});
-                    characterPosition(this.character, 'faceright', 5.5);
-                    TweenLite.to(this.background, 3, { delay: 5.5, left: scenarioThreeEndRoute.endLeft2[0]});
-                    characterPosition(this.character, 'facedown', 8.5);
-                    TweenLite.to(this.background, 1, { delay: 8.5, top: scenarioThreeEndRoute.endTop2[0]});
-                    characterStop(this.character, 9.5 );
-                    this.store.dispatch(incrementAnimationSequence());
-                    break
+                    TweenLite.to(this.background, 1, { delay: 0.5, left: scenarioThreeEndRoute.endLeft1[0]});
+                    characterPosition(this.character, 'facedown', 1);
+                    TweenLite.to(this.background, 2, { delay: 1.5, top: scenarioThreeEndRoute.endTop1[0]});
+                    characterPosition(this.character, 'faceright', 3.5);
+                    TweenLite.to(this.background, 3, { delay: 3.5, left: scenarioThreeEndRoute.endLeft2[0]});
+                    characterPosition(this.character, 'facedown', 6.5);
+                    TweenLite.to(this.background, 0.5, { delay: 6.5, top: scenarioThreeEndRoute.endTop2[0]});
+                    characterStop(this.character, 7 );
+                    setTimeout(() => {
+                        this.showQuestion('employee');
+                    }, 7000);
+                    break;
                 case 7:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 0.5, { top: scenarioThreeEndRoute.finishTop1[0]});
@@ -301,14 +334,11 @@ class Scenario  {
                     characterPosition(this.character, 'facedown', 2.5);
                     TweenLite.to(this.background, 1, {delay: 2.5, top: scenarioThreeEndRoute.finishTop2[0]});
                     characterStop(this.character, 3.5 );
-                    this.store.dispatch(incrementAnimationSequence());
-                    break
-                case 8:
-                    characterPosition(this.character, 'facedown');
-                    TweenLite.to(this.background, 1.5, { top: scenarioTwoEndRoute.endTop3});
-                    characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.store.dispatch(changeGameState('end'))
+                    }, 4500)
                     break;
+
             }
         }
 
@@ -318,43 +348,57 @@ class Scenario  {
                     characterPosition(this.character, 'facedown')
                     TweenLite.to(this.background, 1.5, {top: firstStep.top});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('customer');
+                    }, 1500);
                     break;
                 case 1:
                     characterPosition(this.character, 'facedown')
                     TweenLite.to(this.background, 1.5, {top: secondStep.top});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 2:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: rowTwo.topStand});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 3:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: rowThree.topStand});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());;
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 4:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: scenarioTwoEndRoute.endTop1});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('both');
+                    }, 1500);
                     break;
                 case 5:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: scenarioTwoEndRoute.endTop2});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.showQuestion('employeeStanding');
+                    }, 1500);
                     break;
                 case 6:
                     characterPosition(this.character, 'facedown');
                     TweenLite.to(this.background, 1.5, { top: scenarioTwoEndRoute.endTop3});
                     characterStop(this.character, 1.5 );
-                    this.store.dispatch(incrementAnimationSequence());
+                    setTimeout(() => {
+                        this.store.dispatch(changeGameState('end'))
+                    }, 2500)
                     break;
             }
         }
@@ -367,7 +411,7 @@ class Scenario  {
             // setTimeout(() => {
             //     // this.store.dispatch(changeGameState('end'))
             // }, 1500)
-            this.store.dispatch(changeGameState('end'))
+            // this.store.dispatch(changeGameState('end'))
 
         }
 

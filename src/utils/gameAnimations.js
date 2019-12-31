@@ -1,4 +1,5 @@
 import { TweenLite, TimelineLite, CSSPlugin } from "gsap/all";
+import {setEmployeeConversation} from '../actions/gameEngine'
 
 import flowChart1 from '../images/flowchart-full-1.png';
 import Scenario from '../utils/ScenarioClass';
@@ -72,11 +73,10 @@ export const showEmployee = (mainWrap, employeeWrap, customerWrap) => {
     console.log('employee show')
 }
 
-export const showEmployeeStanding = (mainWrap, employeeWrap, customerWrap) => {
+export const showEmployeeStanding = (mainWrap, employeeStanding) => {
     TweenLite.set(mainWrap, {display: 'block'})
-    TweenLite.set(customerWrap, {opacity: 0})
     TweenLite.to(mainWrap, 0.75, {opacity: 1});
-    TweenLite.to(employeeWrap, 0.75, {opacity: 1});
+    TweenLite.to(employeeStanding, 0.75, {opacity: 1});
     console.log('employee show')
 }
 
@@ -88,19 +88,32 @@ export const showCustomer = (mainWrap, employeeWrap, customerWrap) => {
     console.log('customer show')
 }
 
-export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, who, speechBubble = true) => {
+export const showQuestion = (questionWrap) => {
+    TweenLite.to(questionWrap, 0.75, {opacity: 1});
+    console.log('question show')
+}
+
+export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, who, store, employeeStanding ) => {
     switch(who) {
         case 'both':
             showEmployee(mainWrap, employeeWrap, customerWrap);
             setTimeout(() => {
                 showCustomer(mainWrap, employeeWrap, customerWrap);
-            }, 2000)
+                store.dispatch(setEmployeeConversation(true));
+
+            }, 1500)
             break;
         case 'employee':
             showEmployee(mainWrap, employeeWrap, customerWrap);
+            store.dispatch(setEmployeeConversation(true));
             break;
         case 'customer':
             showCustomer(mainWrap, employeeWrap, customerWrap);
+            store.dispatch(setEmployeeConversation(true));
+            break;
+        case 'employeeStanding':
+            showEmployeeStanding(mainWrap, employeeStanding);
+            store.dispatch(setEmployeeConversation(true));
             break;
     }
 }

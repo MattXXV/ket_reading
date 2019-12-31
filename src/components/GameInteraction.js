@@ -21,6 +21,7 @@ import EmployeeCustomer from './EmployeeCustomer';
 
 
 import employee from '../images/character-with-headset.png';
+import employee_standing from '../images/jake.png';
 import employeeSpeechBubble from '../images/character-bubble-02.png';
 import customer from '../images/customer.png';
 import customerBG from '../images/customer-circle.png';
@@ -44,14 +45,25 @@ const GameInteraction = (props) => {
     const char = useRef([]);
     const interactionWrap = useRef([]);
     const employeeWrap = useRef([]);
+    const employeeTalking = useRef([]);
+    const employeeStanding = useRef([]);
+    const employeeSpeech = useRef([]);
     const customerWrap = useRef([]);
 
 
     // Setting game scenario number 1 -4
     const loadScenario = () => {
         scenario = new Scenario(null, gameChart.current[0], char.current[0], props );
-        scenario.entryAnimation();
         // scenario.pickScenario();
+        scenario.loadQuestion();
+        scenario.entryAnimation();
+
+        setTimeout(() => {
+            animateBG();
+        }, 3000)
+
+
+
         // scenario.loadQuestion();
 
         // scenario.animateChart(-1);
@@ -59,9 +71,12 @@ const GameInteraction = (props) => {
 
     const animateBG = () => {
         if(props.scenarioSequenceLength >= props.animationSequenceNumber) {
-            scenario = new Scenario(4, gameChart.current[0], char.current[0], props, interactionWrap.current[0], employeeWrap.current[0], customerWrap.current[0]);
-            scenario.loadQuestion();
+            scenario = new Scenario(4, gameChart.current[0], char.current[0], props, interactionWrap.current[0], employeeWrap.current[0], customerWrap.current[0], employeeStanding.current[0]);
             scenario.animateChart(props.animationSequenceNumber);
+            setTimeout(() => {
+                scenario.loadQuestion();
+            }, 500)
+
         } else {
             props.dispatch(changeGameState('end'));
         }
@@ -118,15 +133,20 @@ const GameInteraction = (props) => {
             <div className="interaction-wrap"  ref={element => {interactionWrap.current[0] = element;}}>
                 {/*{props.showQuestion === true  &&*/}
                     <div className="big-character-wrap">
-                    <div className="employee-wrap" ref={element => {employeeWrap.current[0] = element;}}>
-                    <div className="employee-image">
-                    <img src={employee} alt="Employee."/>
-                    </div>
-                    <div className="employee-speech-bubble">
-                    <img src={employeeSpeechBubble} alt="Employee Speech Bubble."/>
-                    <p className="employee-response response-text">{props.employeeResponse}</p>
-                    </div>
-                    </div>
+                        <div className="employee-wrap" ref={element => {employeeWrap.current[0] = element;}}>
+                            <div className="employee-image">
+                                <img className="talking"  src={employee} alt="Employee talking." ref={element => {employeeTalking.current[0] = element;}}/>
+                            </div>
+                            <div className="employee-speech-bubble">
+                                <img src={employeeSpeechBubble} alt="Employee Speech Bubble." ref={element => {employeeSpeech.current[0] = element;}}/>
+                                <p className="employee-response response-text">{props.employeeResponse}</p>
+                            </div>
+                        </div>
+
+                        <div className="employee-standing"  ref={element => {employeeStanding.current[0] = element;}}>
+                            <img className="standing" src={employee_standing} alt="Employee standing."/>
+                        </div>
+
 
                     <div className="customer-wrap" ref={element => {customerWrap.current[0] = element;}}>
                     <div className="customer-background">
@@ -145,8 +165,16 @@ const GameInteraction = (props) => {
                     </div>
                 {/*}*/}
             {props.showQuestion === true  &&
-            <InteractionBox animate={animateBG} interactionW={interactionWrap} employeeW={employeeWrap} customerW={customerWrap}
+                <div className="interaction">
+            <InteractionBox animate={animateBG}
+                            interactionW={interactionWrap}
+                            employeeStanding={employeeStanding}
+                            employeeW={employeeWrap}
+                            employeeSpeech={employeeSpeech}
+                            customerW={customerWrap}
+
             />
+                </div>
             }
 
             </div>
