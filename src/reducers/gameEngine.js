@@ -9,9 +9,9 @@ const gameEngineDefault = {
     // Show the help screen
     showHelpScreen: false,
     // Available scenarios to play
-    gameScenarios: [1,2,3,4],
+    gameScenarios: [3],
     // Scenarios that have been played
-    playedScenarios: [],
+    playedScenarios: [1,2,4],
     // Which animation sequence the game is in
     animationSequenceNumber: 0,
     // Current scenario question to load
@@ -46,6 +46,7 @@ const gameEngineDefault = {
         scenario: ['Client calls with the complaint that computer is running slowly', 'Continue'],
         questions:
             [
+                null,
                 'What is the customer calling about?',
                 'Have you turned off your computer and re-started it?',
                 'Provide customer with instructions on how to restart their computer.',
@@ -53,22 +54,26 @@ const gameEngineDefault = {
                 'Have you run an anti-virus program to clear out all potential virus threats?',
                 'Provide customer with instructions on how to run their anti-virus program.',
                 'Did that resolve the issue?',
-                'What should Jake do next?'
+                'What should Jake do next?',
+                null
             ],
 
         customerResponse:
             [
-                'Customer states that they are not able to connect to the internet.',
+                'Customer states that their computer is running slowly.',
+                null,
                 'Client confirms that they did not re-start their computer.',
                 null,
                 'Customer says no, the computer is still slow.',
                 'Customer confirms that they have not run an anti-virus program.',
                 null,
                 'Customer says yes, the computer is much faster now.',
+                null,
                 null
             ],
         answerChoices:
             [
+                ['Continue.'],
                 ['Internet is not working.', 'Computer is slow.', 'Monitor is not working.'],
                 ['Yes.', 'No.'],
                 ['Continue.'],
@@ -80,6 +85,7 @@ const gameEngineDefault = {
             ],
         answerFeedback:
             [
+                [null],
                 ['Incorrect.', 'Correct!', 'Incorrect.'],
                 ['Incorrect. The customer indicated that they had not tried restarting their computer. ', 'Correct! The customer indicated that they had not tried restarting their computer.'],
                 [null],
@@ -90,13 +96,14 @@ const gameEngineDefault = {
                 ['Correct!. The issue has been resolved.', 'Incorrect. The issue has been resolved and the ticket should be closed.', 'Incorrect. The issue has been resolved and the ticket should be closed.']
             ],
         answerKey:
-            [1,1,0,1,1,0,0,0]
+            [0,1,1,0,1,1,0,0,0]
 
     },
         {
             scenario: ['Client calls with the complaint that their computer won’t start.', 'Continue'],
             questions:
                 [
+                    null,
                     'What is the customer calling about?',
                     'Is the power button on? ',
                     'Is your power cord plugged in tightly at computer and power source? ',
@@ -110,6 +117,7 @@ const gameEngineDefault = {
             customerResponse:
                 [
                     'Customer states that their computer won’t start.',
+                    null,
                     'Client confirms that power button is turned on',
                     'Client confirms that power cord was loose.',
                     null,
@@ -120,6 +128,7 @@ const gameEngineDefault = {
                 ],
             answerChoices:
                 [
+                    ['Continue.'],
                     ['The computer won’t turn on.', 'Computer is slow.', 'Monitor is not working.'],
                     ['Yes.', 'No.'],
                     ['Yes.', 'No.'],
@@ -131,6 +140,7 @@ const gameEngineDefault = {
                 ],
             answerFeedback:
                 [
+                    null,
                     ['Correct!', 'Incorrect.', 'Incorrect.'],
                     ['Correct! The customer indicated that power button is on.', 'Incorrect. The customer indicated that power button is on.'],
                     ['Incorrect. The customer said the power cord was loose.', 'Correct! The customer said the power cord was loose.'],
@@ -141,13 +151,14 @@ const gameEngineDefault = {
                     ['Incorrect. The issue is not resolved so you should not close the ticket.', 'Correct! Unresolved high priorities should be escalated to a level 2 technician.', 'Incorrect. The customer indicated that this is a high priority.']
                 ],
             answerKey:
-                [0,0,1,0,1,0,2,1]
+                [0,0,0,1,0,1,0,2,1]
         },
 
         {
             scenario: ['Client calls with the complaint that there is no display on their monitor.', 'Continue'],
             questions:
                 [
+                    null,
                     'What is the customer calling about?',
                     'Is the monitor turned on?  ',
                     'Is the cord plugged in tightly to both the monitor and the computer? ',
@@ -160,6 +171,7 @@ const gameEngineDefault = {
             customerResponse:
                 [
                     'Customer states that their monitor is not working.',
+                    null,
                     'Customer confirms that monitor is turned on.',
                     'Customer confirms that the cord is plugged in tightly in both places.',
                     'Customer confirms that the computer is on but is not sure if it is in sleep mode.',
@@ -169,6 +181,7 @@ const gameEngineDefault = {
                 ],
             answerChoices:
                 [
+                    ['Continue'],
                     ['Internet is not working.', 'Computer is slow.', 'Monitor is not working.'],
                     ['Yes.', 'No.'],
                     ['Yes.', 'No.'],
@@ -179,6 +192,7 @@ const gameEngineDefault = {
                 ],
             answerFeedback:
                 [
+                    null,
                     ['Incorrect.', 'Incorrect.', 'Correct!'],
                     ['Correct! The customer indicated that the monitor is on.', 'Incorrect. The customer indicated that the monitor is on.'],
                     ['Correct! The customer said that the cord is plugged in tightly in both places.', 'Incorrect. The customer said that the cord is plugged in tightly in both places.'],
@@ -188,12 +202,13 @@ const gameEngineDefault = {
                     ['Correct! The issue has been resolved.', 'Incorrect. The issue has been resolved and the ticket should be closed.', 'Incorrect. The issue has been resolved and the ticket should be closed.']
                 ],
             answerKey:
-                [2,0,0,1,0,0,0]
+                [0,2,0,0,1,0,0,0]
         },
         {
             scenario: ['Client calls with the complaint that they cannot connect to the wireless Internet.', 'Continue'],
             questions:
                 [
+                    null,
                     'What is the customer calling about?',
                     'Is Wi-Fi access turned on at computer? ',
                     'Is the router turned on and cables connected?',
@@ -205,6 +220,7 @@ const gameEngineDefault = {
             customerResponse:
                 [
                     'Customer states that they are not able to connect to the internet.',
+                    null,
                     'Customer confirms that Wi-Fi is turned on at computer.',
                     'Customer confirms that the router is on and that it is connected to the modem.',
                     'Customer confirms that there is a list of available networks.',
@@ -213,6 +229,7 @@ const gameEngineDefault = {
                 ],
             answerChoices:
                 [
+                    ['Continue.'],
                     ['Internet is not working.', 'Computer is slow.', 'Monitor is not working.'],
                     ['Yes.', 'No.'],
                     ['Yes.', 'No.'],
@@ -222,6 +239,7 @@ const gameEngineDefault = {
                 ],
             answerFeedback:
                 [
+                    null,
                     ['Correct!', 'Incorrect.', 'Incorrect.'],
                     ['Correct! The customer indicated that Wi-Fi is turned on at computer.', 'The customer indicated that Wi-Fi is turned on at computer.'],
                     ['Correct! The customer said that the router is on and that it is connected to the modem.', 'Incorrect. The customer said that the router is on and that it is connected to the modem.'],
@@ -230,7 +248,7 @@ const gameEngineDefault = {
                     ['Incorrect. The issue is not resolved so you should not close the ticket.', 'Correct! Unresolved high priorities should be escalated to a level 2 technician.', 'Incorrect. The customer indicated that this is a high priority.']
                 ],
             answerKey:
-                [0,0,0,0,2,1]
+                [0,0,0,0,0,2,1]
         }
     ]
 }
@@ -317,6 +335,7 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 showFeedback: action.flag
             };
         case "SET_SCENARIO_SEQUENCE_LENGTH":
+            console.log('set sequence length')
             return {
                 ...state,
                 animationSequenceNumber: 0,

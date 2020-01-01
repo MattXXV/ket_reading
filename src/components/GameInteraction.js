@@ -36,23 +36,25 @@ const GameInteraction = (props) => {
     const employeeWrap = useRef([]);
     const employeeTalking = useRef([]);
     const employeeStanding = useRef([]);
+    const employeeListening = useRef([]);
     const employeeSpeech = useRef([]);
     const customerWrap = useRef([]);
 
     const loadScenario = () => {
         scenario = new Scenario(null, gameChart.current[0], char.current[0], props );
         scenario.loadQuestion();
-        scenario.entryAnimation();
+        // scenario.entryAnimation();
+        //     animateBG();
 
         setTimeout(() => {
             animateBG();
-        }, 3000)
+        }, 600)
     };
 
     const animateBG = () => {
         console.log('animate bg')
         if(props.scenarioSequenceLength >= props.animationSequenceNumber) {
-            scenario = new Scenario(4, gameChart.current[0], char.current[0], props, interactionWrap.current[0], employeeWrap.current[0], customerWrap.current[0], employeeStanding.current[0]);
+            scenario = new Scenario(4, gameChart.current[0], char.current[0], props, interactionWrap.current[0], employeeWrap.current[0], customerWrap.current[0], employeeStanding.current[0], employeeListening.current[0]);
             scenario.animateChart(props.animationSequenceNumber);
             setTimeout(() => {
                 scenario.loadQuestion();
@@ -84,10 +86,14 @@ const GameInteraction = (props) => {
     return (
         <div className="game-interaction-wrap">
             <div className="game-scenario-bg" ref={element => {gameChart.current[0] = element;}}>
-                {props.currentScenario === 1 && <img src={flowChart1} alt="Scenario background."/>}
-                {props.currentScenario === 2 && <img src={flowChart2} alt="Scenario background."/>}
-                {props.currentScenario === 3 && <img src={flowChart3} alt="Scenario background."/>}
-                {props.currentScenario === 4 && <img src={flowChart4} alt="Scenario background."/>}
+                {props.currentScenario === 1 && <img className="chartBg-1" src={flowChart1} alt="Scenario background."/>}
+                {props.currentScenario === 2 && <img className="chartBg-2" src={flowChart2} alt="Scenario background."/>}
+                {props.currentScenario === 3 && <img className="chartBg-3" src={flowChart3} alt="Scenario background."/>}
+                {props.currentScenario === 4 && <img className="chartBg-4" src={flowChart4} alt="Scenario background."/>}
+                {/*<img className="chartBg-1" src={flowChart1} alt="Scenario background."/>*/}
+                {/*<img className="chartBg-2" src={flowChart2} alt="Scenario background."/>*/}
+                {/*<img className="chartBg-3" src={flowChart3} alt="Scenario background."/>*/}
+                {/*<img className="chartBg-4" src={flowChart4} alt="Scenario background."/>*/}
 
             </div>
             <div className="customer-response-wrapper" ref={element => {responseWrap.current[0] = element;}}>
@@ -122,7 +128,7 @@ const GameInteraction = (props) => {
                             <img className="standing" src={employee_standing} alt="Employee standing."/>
                         </div>
 
-                        <div className="employee-listening"  ref={element => {employeeStanding.current[0] = element;}}>
+                        <div className="employee-listening"  ref={element => {employeeListening.current[0] = element;}}>
                             <img className="standing" src={employee} alt="Employee listening."/>
                         </div>
 

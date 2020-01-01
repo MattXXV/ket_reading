@@ -3,7 +3,7 @@ import connect from "react-redux/es/connect/connect";
 // External actions, classes, functions
 import {toggleHelpScreen, showMiniChart} from '../actions/gameEngine';
 // Stylesheet
-
+import '../css/OptionsBar.css';
 
 const OptionsBar = ({dispatch}) => {
 

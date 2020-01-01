@@ -4,8 +4,8 @@ import {setEmployeeConversation} from '../actions/gameEngine';
 
 export const firstEntry = (bg, character) => {
     TweenLite.set(character, {className:"character-wrap walking"});
-    TweenLite.to(character, 2.5 , {top: 198});
-    TweenLite.set(character, {delay: 2.5, className:"character-wrap"});
+    TweenLite.to(character, 2 , {top: 198});
+    TweenLite.set(character, {delay: 2, className:"character-wrap"});
 };
 
 export const downLeft = (bg, character) => {
@@ -99,7 +99,7 @@ export const showQuestion = (questionWrap) => {
     console.log('question show')
 };
 
-export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, who, store, employeeStanding ) => {
+export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, who, store, employeeStanding, employeeListening ) => {
     switch(who) {
         case 'both':
             showEmployee(mainWrap, employeeWrap, customerWrap);
@@ -118,6 +118,11 @@ export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, wh
             break;
         case 'employeeStanding':
             showEmployeeStanding(mainWrap, employeeStanding);
+            store.dispatch(setEmployeeConversation(true));
+            break;
+        case 'employeeListening':
+            console.log('employee listening')
+            showEmployeeListening(mainWrap, employeeListening, customerWrap);
             store.dispatch(setEmployeeConversation(true));
             break;
         default:

@@ -14,12 +14,13 @@ const ScenarioIntro = (props) => {
 
     const loadScenario = () => {
         const scenario = new Scenario(null, null, null, props);
+        props.dispatch(resetAnimationNumber());
         scenario.pickScenario();
         props.dispatch(changeGameState('game'));
     };
 
     useEffect(() => {
-        props.dispatch(resetAnimationNumber());
+
     });
 
     return (

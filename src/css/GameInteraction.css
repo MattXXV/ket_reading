@@ -4,6 +4,12 @@
     left: -1133px;
 }
 
+.game-scenario-bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 
 .customer-response-wrapper {
     position: absolute;
