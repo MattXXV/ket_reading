@@ -122,6 +122,10 @@ const GameInteraction = (props) => {
                             <img className="standing" src={employee_standing} alt="Employee standing."/>
                         </div>
 
+                        <div className="employee-listening"  ref={element => {employeeStanding.current[0] = element;}}>
+                            <img className="standing" src={employee} alt="Employee listening."/>
+                        </div>
+
                         <div className="customer-wrap" ref={element => {customerWrap.current[0] = element;}}>
                             <div className="customer-background">
                                 <img src={customerBG} alt="Customer Background."/>

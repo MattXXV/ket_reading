@@ -19,6 +19,12 @@
     left: 58px;
     opacity: 0;
 }
+.employee-listening {
+    position: absolute;
+    top: 83px;
+    left: 58px;
+    opacity: 0;
+}
 
 .employee-image img {
     height: 450px;
