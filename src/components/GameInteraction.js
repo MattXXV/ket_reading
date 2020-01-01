@@ -1,26 +1,25 @@
 import React, {useRef, useState, useEffect} from 'react'
 import connect from "react-redux/es/connect/connect";
-import Scenario from '../utils/ScenarioClass';
-import '../css/GameInteraction.css';
+// External actions, functions, classes
 import { TweenLite} from "gsap/all";
-import {
-    changeGameState
-} from "../actions/gameEngine";
+import {toggleButtonLock} from '../actions/gameEngine';
+import Scenario from '../utils/ScenarioClass';
+// Images
 import flowChart1 from '../images/flowchart-full-1.png';
 import flowChart2 from '../images/flowchart-full-2.png';
 import flowChart3 from '../images/flowchart-full-3.png';
 import flowChart4 from '../images/flowchart-full-4.png';
 import ChartCharacter from './ChartCharacter';
 import InteractionBox from './InteractionBox';
-
-
 import employee from '../images/character-with-headset.png';
 import employee_standing from '../images/jake.png';
 import employeeSpeechBubble from '../images/character-bubble-02.png';
 import customer from '../images/customer.png';
 import customerBG from '../images/customer-circle.png';
 import customerSpeechBubble from '../images/customer-bubble-02.png';
+// Stylesheets
 import '../css/EmployeeCustomer.css';
+import '../css/GameInteraction.css';
 
 
 const GameInteraction = (props) => {
@@ -28,9 +27,8 @@ const GameInteraction = (props) => {
     let scenario;
     // setting component organic states
     const [responseMenu, setResponseMenu] = useState(false);
-    // const [showQuestion, setShowQuestion] = useState(false);
-    // const [showFeedback, setShowFeedback] = useState(false);
-    // defining our animated assets
+
+    // animated assets
     const responseWrap = useRef([]);
     const gameChart = useRef([]);
     const char = useRef([]);
@@ -41,31 +39,32 @@ const GameInteraction = (props) => {
     const employeeSpeech = useRef([]);
     const customerWrap = useRef([]);
 
-
-    // Setting game scenario number 1 -4
     const loadScenario = () => {
         scenario = new Scenario(null, gameChart.current[0], char.current[0], props );
-        // scenario.pickScenario();
         scenario.loadQuestion();
         scenario.entryAnimation();
 
         setTimeout(() => {
             animateBG();
         }, 3000)
-    }
+    };
 
     const animateBG = () => {
+        console.log('animate bg')
         if(props.scenarioSequenceLength >= props.animationSequenceNumber) {
             scenario = new Scenario(4, gameChart.current[0], char.current[0], props, interactionWrap.current[0], employeeWrap.current[0], customerWrap.current[0], employeeStanding.current[0]);
             scenario.animateChart(props.animationSequenceNumber);
             setTimeout(() => {
                 scenario.loadQuestion();
+
+                if(props.lockButtons === true) {
+                    console.log('props=', props.lockButtons);
+                    props.dispatch(toggleButtonLock());
+                }
             }, 500)
-
         }
+    };
 
-    }
-    // scenario.pickScenario(1);
     // Toggles custom response menu on right side of screen
     const toggleCustomerResponse = () => {
         if(responseMenu === false) {
@@ -75,12 +74,11 @@ const GameInteraction = (props) => {
             TweenLite.to(responseWrap.current, 0.75, {right: -299});
             setResponseMenu(false)
         }
-    }
-
+    };
 
     useEffect(() => {
         loadScenario();
-    }, [])
+    }, []);
 
 
     return (
@@ -93,7 +91,8 @@ const GameInteraction = (props) => {
 
             </div>
             <div className="customer-response-wrapper" ref={element => {responseWrap.current[0] = element;}}>
-                <button className="customer-response-button" onClick={toggleCustomerResponse}></button>
+                <button className="customer-response-button" onClick={toggleCustomerResponse}>
+                </button>
                 <div className="response-text">
                     <h3>Customer Response</h3>
                     <p>
@@ -123,45 +122,37 @@ const GameInteraction = (props) => {
                             <img className="standing" src={employee_standing} alt="Employee standing."/>
                         </div>
 
+                        <div className="customer-wrap" ref={element => {customerWrap.current[0] = element;}}>
+                            <div className="customer-background">
+                                <img src={customerBG} alt="Customer Background."/>
+                            </div>
 
-                    <div className="customer-wrap" ref={element => {customerWrap.current[0] = element;}}>
-                    <div className="customer-background">
-                    <img src={customerBG} alt="Customer Background."/>
+                            <div className="customer-image">
+                                <img src={customer} alt="Customer."/>
+                            </div>
+
+                            <div className="customer-speech-bubble">
+                                <img src={customerSpeechBubble} alt="Customer Speech Bubble."/>
+                                <p className="customer-response response-text">{props.customerResponse}</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div className="customer-image">
-                    <img src={customer} alt="Customer."/>
-                    </div>
-
-                    <div className="customer-speech-bubble">
-                    <img src={customerSpeechBubble} alt="Customer Speech Bubble."/>
-                    <p className="customer-response response-text">{props.customerResponse}</p>
-                    </div>
-                    </div>
-                    </div>
-                {/*}*/}
             {props.showQuestion === true  &&
                 <div className="interaction">
-            <InteractionBox animate={animateBG}
-                            interactionW={interactionWrap}
-                            employeeStanding={employeeStanding}
-                            employeeW={employeeWrap}
-                            employeeSpeech={employeeSpeech}
-                            customerW={customerWrap}
-
-            />
+                    <InteractionBox animate={animateBG}
+                                    interactionW={interactionWrap}
+                                    employeeStanding={employeeStanding}
+                                    employeeW={employeeWrap}
+                                    employeeSpeech={employeeSpeech}
+                                    customerW={customerWrap}
+                    />
                 </div>
             }
-
             </div>
-
-            {/*<div className="test-bttn-wrap">*/}
-                {/*<button onClick={(e) => {animateBG()}}>Animation test</button>*/}
-            {/*</div>*/}
-
         </div>
     )
-}
+};
 
 function mapStateToProps(state) {
     return {

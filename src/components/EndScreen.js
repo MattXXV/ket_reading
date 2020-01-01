@@ -1,12 +1,12 @@
 import React from 'react';
-
-import congratulations from '../images/congratulations.png';
 import connect from "react-redux/es/connect/connect";
-import '../css/EndScreen.css';
+// External funcs, actions, classes
 import {changeGameState, resetScenarios} from "../actions/gameEngine";
+// Images
 import employee_end from "../images/character-with-headset.png";
-
-
+import congratulations from '../images/congratulations.png';
+// Stylesheets
+import '../css/EndScreen.css';
 
 
 const EndScreen = (props) => {
@@ -18,8 +18,7 @@ const EndScreen = (props) => {
         } else {
             props.dispatch(changeGameState('scenario'));
         }
-
-    }
+    };
 
     return (
         <div className="end-screen-wrapper">
@@ -28,6 +27,7 @@ const EndScreen = (props) => {
                     <img className="talking"  src={employee_end} alt="Employee talking."/>
                 </div>
             </div>
+
             <div className="end-screen-congratulations">
                 <div className="row justify-content-center">
                     <div className="col-12 text-center">
@@ -40,6 +40,7 @@ const EndScreen = (props) => {
                     </div>
                 </div>
             </div>
+
         </div>
     )
 }

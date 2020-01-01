@@ -2,25 +2,46 @@
 
 
 const gameEngineDefault = {
+    // Controlling game screen section
     gameState: 'splash',
+    // Which scenario is currently loaded
     currentScenario: 1,
+    // Show the help screen
     showHelpScreen: false,
+    // Available scenarios to play
     gameScenarios: [1,2,3,4],
+    // Scenarios that have been played
     playedScenarios: [],
+    // Which animation sequence the game is in
     animationSequenceNumber: 0,
+    // Current scenario question to load
     currentQuestion: '',
+    // User answer choices for current question
     currentAnswerChoices: [],
+    // User feedback for current question
     answerFeedback: [],
+    // The employees response to the customer for current question
     employeeResponse: null,
+    // The customers response to employee for current question
     customerResponse: null,
+    // The array position of correct answer for current question ( 0, 1, or 2)
     correctValue: 0,
+    // Show the mini chart map screen
     showMiniChart: false,
+    // How long is the current scenarios animation sequence
     scenarioSequenceLength: 0,
+    // Stores if employee customer conversation is running or completed
     employeeConversationComplete: false,
+    // Feedback to show based on users selected answer
     userSelectedAnswerFeedback: '',
+    // Was the question answered correct
     isCorrect: false,
+    // Show the question interaction assets
     showQuestion: false,
+    // Show the feedback
     showFeedback: false,
+    // Quick hack to prevent double clicks
+    lockButtons: false,
     dataBank: [[], {
         scenario: ['Client calls with the complaint that computer is running slowly', 'Continue'],
         questions:
@@ -212,8 +233,9 @@ const gameEngineDefault = {
                 [0,0,0,0,2,1]
         }
     ]
-
 }
+
+// M.A - If time permits let's clean this up and not return the full state on every action call if not necessary. Makes the program work harder than necessary.
 const gameEngineReducer = (state = gameEngineDefault, action) => {
     switch(action.type) {
         case 'GAME_STATE':
@@ -227,20 +249,6 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                ...state,
                showHelpScreen: !state.showHelpScreen
            };
-        // case 'RESET_SCENARIOS':
-        //     return {
-        //         ...state,
-        //         gameScenarios: [1, 2, 3, 4],
-        //         playedScenarios: [],
-        //         currentQuestion: '',
-        //         answerFeedback: [],
-        //         currentAnswerChoices: [],
-        //         customerResponse: '',
-        //         employeeResponse: '',
-        //         correctValue: 0,
-        //         // currentScenario: null
-        //
-        //     };
         case 'RESET_SCENARIOS':
             console.log('reset_scenarios')
             return {
@@ -261,8 +269,6 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
             const scenarioBank = state.gameScenarios.filter((item) => {
                return  item !== action.scenario
             })
-            // const b = state.currentScenario = action.scenario;
-            // const c = state.playedScenarios.concat(action.scenario);
             return {
                 ...state,
                 gameScenarios: scenarioBank,
@@ -284,10 +290,6 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 correctValue: state.dataBank[state.currentScenario].answerKey[state.animationSequenceNumber],
                 customerResponse: state.dataBank[state.currentScenario].customerResponse[state.animationSequenceNumber],
                 employeeResponse: state.dataBank[state.currentScenario].questions[state.animationSequenceNumber],
-                // currentQuestion: 'one',
-                // currentAnswerChoices: 'two',
-                // answerFeedback: 'three',
-                // correctValue: 'four'
             };
         case "SET_USER_FEEDBACK":
             return {
@@ -331,8 +333,12 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 animationSequenceNumber: 0
             };
 
-
-
+        case "LOCK_BUTTONS":
+            console.log('toggle buttons')
+            return {
+                ...state,
+                lockButtons: !state.lockButtons
+            };
         default:
             return state
     }

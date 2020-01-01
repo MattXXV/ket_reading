@@ -1,13 +1,15 @@
 import React from 'react';
 import connect from "react-redux/es/connect/connect";
-
+// Stylesheet
 import '../css/HelpScreen.css';
 
 const HelpScreen = ({gameState}) => {
 
     return (
         <div className="help-screen">
-            <div className="help-cover"></div>
+            <div className="help-cover">
+            </div>
+
             <div className="help-window">
                 <h3 className="text-white">HOW TO PLAY</h3>
                 <p>Jake is a help desk technician whose job is to triage the calls that come into the call center. He is the first point of contact for clients and his goal with every client call is to gather as much information as possible. </p>
@@ -16,18 +18,11 @@ const HelpScreen = ({gameState}) => {
             </div>
         </div>
     )
-}
+};
 
 function mapStateToProps(state) {
     return {
-        // scenarioIndex: state.scenarioIndex,
-        // problemIndex: state.problemIndex,
-        // correctAnswers: state.correctAnswers,
         gameState: state.gameState
-        // correctCharacters: state.correctCharacters,
-        // questionLoad: state.questionLoad,
-        // interactionStart: state.interactionStart,
-        // open_door_anim: state.open_door_anim
     };
 }
 

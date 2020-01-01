@@ -1,9 +1,8 @@
-import { TweenLite, CSSPlugin } from "gsap/all";
+import { TweenLite} from "gsap/all";
 import {changeGameState, incrementAnimationSequence, loadScenario, resetScenarios, loadCurrentQuestionData, showQuestionBox, setScenarioSequenceLength} from "../actions/gameEngine";
 import {firstStep, secondStep, rowOne, rowTwo, rowThree, scenarioOneEndRoute, scenarioTwoEndRoute, scenarioThreeEndRoute} from '../staticData/data';
 import {characterPosition, characterStop, firstEntry, animateEmployeeCustomer} from './gameAnimations';
 
-const C = CSSPlugin;
 
 class Scenario  {
     constructor(scenario = undefined, background = undefined, character = undefined, store = {}, interactionWrap, employeeWrap, customerWrap, employeeStanding) {
@@ -38,6 +37,8 @@ class Scenario  {
                 case 4:
                     this.store.dispatch(setScenarioSequenceLength(6));
                     break;
+                default:
+                    throw new Error('There is an error in the Scenario Class. Double check the pickScenario() logic');
             }
 
     }
@@ -49,7 +50,7 @@ class Scenario  {
     showQuestion = (personToAnimate) => {
         this.store.dispatch(showQuestionBox(true));
         this.store.dispatch(incrementAnimationSequence());
-     animateEmployeeCustomer(this.interactionWrap, this.employeeWrap, this.customerWrap, personToAnimate, this.store, this.employeeStanding);
+        animateEmployeeCustomer(this.interactionWrap, this.employeeWrap, this.customerWrap, personToAnimate, this.store, this.employeeStanding);
     }
 
 
@@ -141,8 +142,10 @@ class Scenario  {
                     TweenLite.to(this.background, 1, {delay: 1.5, top: scenarioOneEndRoute.finishTop2[0]});
                     characterStop(this.character, 2.5 );
                     this.store.dispatch(incrementAnimationSequence());
-                    setTimeout(() => { this.store.dispatch(changeGameState('end')) }, 3500)
+                    setTimeout(() => { this.store.dispatch(changeGameState('end')) }, 3500);
                     break;
+                default:
+                    throw new Error('There is an error in the Scenario Class. Double check the animation sequences for scenario 1');
 
             }
         }
@@ -232,8 +235,10 @@ class Scenario  {
                     this.store.dispatch(incrementAnimationSequence());
                     setTimeout(() => {
                         this.store.dispatch(changeGameState('end'))
-                    }, 2500)
+                    }, 2500);
                     break;
+                default:
+                     throw new Error('There is an error in the Scenario Class. Double check the animation sequences for scenario 2');
             }
         }
 
@@ -322,8 +327,10 @@ class Scenario  {
                     this.store.dispatch(incrementAnimationSequence());
                     setTimeout(() => {
                         this.store.dispatch(changeGameState('end'))
-                    }, 3500)
+                    }, 3500);
                     break;
+                default:
+                    throw new Error('There is an error in the Scenario Class. Double check the animation sequences for scenario 3');
 
             }
         }
@@ -385,8 +392,10 @@ class Scenario  {
                     this.store.dispatch(incrementAnimationSequence());
                     setTimeout(() => {
                         this.store.dispatch(changeGameState('end'))
-                    }, 2500)
+                    }, 2500);
                     break;
+                default:
+                    throw new Error('There is an error in the Scenario Class. Double check the animation sequences for scenario 4');
             }
         }
     }

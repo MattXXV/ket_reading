@@ -1,13 +1,15 @@
+// This file just contains static game data
 
-
-
+// first animation coords after character intro walk
 export const firstStep = {
     top: -7
 }
+// second animation chart step after customer calls with complaint
 export const secondStep = {
     top: -237
 }
 
+// First row chart animation coords
 export const rowOne = {
     topStand: -240,
     topWalk: -278,
@@ -16,7 +18,7 @@ export const rowOne = {
     leftOne: -499,
     leftTwo: 154
 }
-
+// Second row chart animation coords
 export const rowTwo = {
     topStand: -491,
     topWalk: -527,
@@ -25,7 +27,7 @@ export const rowTwo = {
     leftOne: -499,
     leftTwo: 154
 }
-
+// Third row chart animation coords
 export const rowThree = {
     topStand: -730,
     topWalk: -775,
@@ -34,7 +36,7 @@ export const rowThree = {
     leftOne: -499,
     leftTwo: 154
 }
-
+// End route coords for scenario 1
 export const scenarioOneEndRoute = {
     endLeft1:[492],
     endTop1:[-1122],
@@ -45,13 +47,13 @@ export const scenarioOneEndRoute = {
     finishLeft1:[-628],
     finishTop2:[-1449]
 }
-
+// End route coords for scenario 2
 export const scenarioTwoEndRoute = {
     endTop1:[-977],
     endTop2:[-1210],
     endTop3:[-1450]
 }
-
+// End route coords for scenario 3
 export const scenarioThreeEndRoute = {
     endLeft1:[492],
     endTop1:[-1122],

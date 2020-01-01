@@ -1,33 +1,26 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux'
-
-import blue_dialog_box from '../images/blue-dialog-box.png';
-import Scenario from '../utils/ScenarioClass';
-import employee_scenario_start from "../images/jake.png";
-import '../css/ScenarioIntro.css';
+// External functions, actions, classes
 import {changeGameState, resetAnimationNumber} from "../actions/gameEngine";
+import Scenario from '../utils/ScenarioClass';
+// Image imports
+import blue_dialog_box from '../images/blue-dialog-box.png';
+import employee_scenario_start from "../images/jake.png";
+// Stylesheets
+import '../css/ScenarioIntro.css';
+
 
 const ScenarioIntro = (props) => {
 
-    // const resetScenarios = new Promise(() => {
-    //     props.dispatch(resetScenarios());
-    // })
     const loadScenario = () => {
         const scenario = new Scenario(null, null, null, props);
-        // if(props.gameScenarios.length > 0) {
-        //     // scenario.pickScenario();
-        // } else {
-        //     props.dispatch(resetScenarios());
-        //
-        // }
         scenario.pickScenario();
-        // scenario.loadQuestion();
         props.dispatch(changeGameState('game'));
-    }
+    };
 
     useEffect(() => {
         props.dispatch(resetAnimationNumber());
-    })
+    });
 
     return (
         <div>
@@ -36,9 +29,10 @@ const ScenarioIntro = (props) => {
                     <img className="talking"  src={employee_scenario_start} alt="Employee talking."/>
                 </div>
             </div>
+
             <div className="position-absolute intro-container">
                 <div className="scenario-text-bg">
-                <img src={blue_dialog_box} alt="Blue Dialog Box" />
+                    <img src={blue_dialog_box} alt="Blue Dialog Box" />
                 </div>
 
                 <div className="position-absolute scenario-position">
@@ -48,13 +42,10 @@ const ScenarioIntro = (props) => {
                         <button className="scenario-continue" onClick={loadScenario}>continue</button>
                     </div>
                 </div>
-            {/*<div className="position-absolute scenario-box-closed">*/}
-                {/*<img src={closed_box} alt="Closed delivery box."/>*/}
-            {/*</div>*/}
             </div>
         </div>
     )
-}
+};
 
 function mapStateToProps(state) {
     return {

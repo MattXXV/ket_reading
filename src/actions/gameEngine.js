@@ -63,3 +63,7 @@ export const showMiniChart = () => ({
 export const resetAnimationNumber = () => ({
     type: 'SET_SCENARIO_SEQUENCE_LENGTH',
 })
+
+export const toggleButtonLock = () => ({
+    type: 'LOCK_BUTTONS',
+})

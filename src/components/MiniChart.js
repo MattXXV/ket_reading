@@ -1,16 +1,19 @@
 import React, {useRef, useEffect} from 'react';
 import connect from "react-redux/es/connect/connect";
+// External functions, classes, actions
 import { TweenLite} from "gsap/all";
+// Images
 import miniChart1 from '../images/mini-chart-1.png';
 import miniChart2 from '../images/mini-chart-2.png';
 import miniChart3 from '../images/mini-chart-3.png';
 import miniChart4 from '../images/mini-chart-4.png';
 import miniCharacter from '../images/mini-char.png'
+// Stylesheet
 import '../css/MiniChart.css';
 
 
 const MiniChart = (props) => {
-   // Assets changed by Greensock animation library
+   // animated assets
     const diamond = useRef([]);
     const rectangle = useRef([]);
     const character = useRef([]);
@@ -66,8 +69,10 @@ const MiniChart = (props) => {
             case 16:
                 TweenLite.set(character.current[0],  {className:"mini-char-wrap spot-16"});
                 break;
+            default:
+                throw new Error('Check logic in setCharacter() in Mini Chart component ')
         }
-    }
+    };
 
     // Highlights the current position on the minichart where the user is in the game
     const setChart = (shape, position) => {
@@ -224,13 +229,14 @@ const MiniChart = (props) => {
                     return
                 }
                 break;
+            default:
+                throw new Error('Check logic in setChart() in Mini Chart component ');
         }
-
-    }
+    };
 
     useEffect(() => {
-        setChart()
-    })
+        setChart();
+    });
 
     return (
         <div className="chart-wrap">
@@ -238,11 +244,9 @@ const MiniChart = (props) => {
             </div>
 
             <div className="rectangle-highlight" ref={element => {rectangle.current[0] = element}}>
-
             </div>
 
             <div className="diamond-highlight" ref={element => {diamond.current[0] = element}}>
-
             </div>
 
             <div className="map-container">
@@ -255,11 +259,9 @@ const MiniChart = (props) => {
             <div className="mini-char-wrap spot-1" ref={element => {character.current[0] = element}}>
                 <img src={miniCharacter} alt="Mini character." />
             </div>
-
-
         </div>
     )
-}
+};
 
 function mapStateToProps(state) {
     return {

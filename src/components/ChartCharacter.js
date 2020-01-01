@@ -1,7 +1,8 @@
 import React from 'react';
-
-import '../css/ChartCharacter.css';
 import connect from "react-redux/es/connect/connect";
+// Stylesheet
+import '../css/ChartCharacter.css';
+
 
 const ChartCharacter = (props) => {
 
@@ -9,7 +10,7 @@ const ChartCharacter = (props) => {
         <div className="character">
         </div>
     )
-}
+};
 
 
 function mapStateToProps(state) {

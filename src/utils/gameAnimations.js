@@ -1,7 +1,6 @@
-import { TweenLite, CSSPlugin } from "gsap/all";
+import { TweenLite } from "gsap/all";
 import {setEmployeeConversation} from '../actions/gameEngine'
 
-const C = CSSPlugin;
 
 export const firstEntry = (bg, character) => {
     TweenLite.set(character, {className:"character-wrap walking"})
@@ -113,5 +112,7 @@ export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, wh
             showEmployeeStanding(mainWrap, employeeStanding);
             store.dispatch(setEmployeeConversation(true));
             break;
+        default:
+            throw new Error('bad parameter in animateEmployeeCustomer() in gameAnimations.js ')
     }
 }
