@@ -4,14 +4,14 @@ import {questionData} from '../utils/staticGameData';
 const gameEngineDefault = {
     // Controlling game screen section
     gameState: 'splash',
-    // Which scenario is currently loaded
-    currentScenario: 1,
+    // Which scenario is currently loaded 1,2,3 or 4
+    currentScenario: null,
     // Show the help screen
     showHelpScreen: false,
     // Available scenarios to play
-    gameScenarios: [3],
+    gameScenarios: [1,2,3,4],
     // Scenarios that have been played
-    playedScenarios: [1,2,4],
+    playedScenarios: [],
     // Which animation sequence the game is in
     animationSequenceNumber: 0,
     // Current scenario question to load
@@ -40,7 +40,7 @@ const gameEngineDefault = {
     showQuestion: false,
     // Show the feedback
     showFeedback: false,
-    // Quick hack to prevent double clicks
+    // Quick hack to prevent double clicks - not currently used in game 12/29/19
     lockButtons: false,
 }
 
@@ -48,7 +48,6 @@ const gameEngineDefault = {
 const gameEngineReducer = (state = gameEngineDefault, action) => {
     switch(action.type) {
         case 'GAME_STATE':
-            console.log('change game state')
             return {
                 ...state,
                 gameState: action.gameState
@@ -59,7 +58,6 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                showHelpScreen: !state.showHelpScreen
            };
         case 'RESET_SCENARIOS':
-            console.log('reset_scenarios')
             return {
                 ...state,
                 gameScenarios: [1, 2, 3, 4],
@@ -74,10 +72,9 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
 
             };
         case 'LOAD_SCENARIO':
-            console.log('load_scenario')
             const scenarioBank = state.gameScenarios.filter((item) => {
                return  item !== action.scenario
-            })
+            });
             return {
                 ...state,
                 gameScenarios: scenarioBank,
@@ -90,7 +87,6 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 animationSequenceNumber: state.animationSequenceNumber + 1
             };
         case 'LOAD_CURRENT QUESTION_DATA':
-            console.log('load_current_question')
             return {
                 ...state,
                 currentQuestion: questionData[state.currentScenario].questions[state.animationSequenceNumber],
@@ -126,7 +122,6 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
                 showFeedback: action.flag
             };
         case "SET_SCENARIO_SEQUENCE_LENGTH":
-            console.log('set sequence length')
             return {
                 ...state,
                 animationSequenceNumber: 0,
@@ -144,7 +139,6 @@ const gameEngineReducer = (state = gameEngineDefault, action) => {
             };
 
         case "LOCK_BUTTONS":
-            console.log('toggle buttons')
             return {
                 ...state,
                 lockButtons: !state.lockButtons
