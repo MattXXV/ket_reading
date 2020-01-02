@@ -26,10 +26,10 @@ const GameInteraction = (props) => {
 
     let scenario;
     // setting component organic states
-    const [responseMenu, setResponseMenu] = useState(false);
+    // const [responseMenu, setResponseMenu] = useState(false);
 
     // animated assets
-    const responseWrap = useRef([]);
+    // const responseWrap = useRef([]);
     const gameChart = useRef([]);
     const char = useRef([]);
     const interactionWrap = useRef([]);
@@ -54,7 +54,7 @@ const GameInteraction = (props) => {
     const animateBG = () => {
         console.log('animate bg')
         if(props.scenarioSequenceLength >= props.animationSequenceNumber) {
-            scenario = new Scenario(4, gameChart.current[0], char.current[0], props, interactionWrap.current[0], employeeWrap.current[0], customerWrap.current[0], employeeStanding.current[0], employeeListening.current[0]);
+            scenario = new Scenario(null, gameChart.current[0], char.current[0], props, interactionWrap.current[0], employeeWrap.current[0], customerWrap.current[0], employeeStanding.current[0], employeeListening.current[0]);
             scenario.animateChart(props.animationSequenceNumber);
             setTimeout(() => {
                 scenario.loadQuestion();
@@ -68,15 +68,15 @@ const GameInteraction = (props) => {
     };
 
     // Toggles custom response menu on right side of screen
-    const toggleCustomerResponse = () => {
-        if(responseMenu === false) {
-            TweenLite.to(responseWrap.current, 0.75, {right: 0});
-            setResponseMenu(true)
-        } else {
-            TweenLite.to(responseWrap.current, 0.75, {right: -299});
-            setResponseMenu(false)
-        }
-    };
+    // const toggleCustomerResponse = () => {
+    //     if(responseMenu === false) {
+    //         TweenLite.to(responseWrap.current, 0.75, {right: 0});
+    //         setResponseMenu(true)
+    //     } else {
+    //         TweenLite.to(responseWrap.current, 0.75, {right: -299});
+    //         setResponseMenu(false)
+    //     }
+    // };
 
     useEffect(() => {
         loadScenario();
@@ -90,29 +90,23 @@ const GameInteraction = (props) => {
                 {props.currentScenario === 2 && <img className="chartBg-2" src={flowChart2} alt="Scenario background."/>}
                 {props.currentScenario === 3 && <img className="chartBg-3" src={flowChart3} alt="Scenario background."/>}
                 {props.currentScenario === 4 && <img className="chartBg-4" src={flowChart4} alt="Scenario background."/>}
-                {/*<img className="chartBg-1" src={flowChart1} alt="Scenario background."/>*/}
-                {/*<img className="chartBg-2" src={flowChart2} alt="Scenario background."/>*/}
-                {/*<img className="chartBg-3" src={flowChart3} alt="Scenario background."/>*/}
-                {/*<img className="chartBg-4" src={flowChart4} alt="Scenario background."/>*/}
-
             </div>
-            <div className="customer-response-wrapper" ref={element => {responseWrap.current[0] = element;}}>
-                <button className="customer-response-button" onClick={toggleCustomerResponse}>
-                </button>
-                <div className="response-text">
-                    <h3>Customer Response</h3>
-                    <p>
-                        Customer states that they are not able to connect to the internet.
-                    </p>
-                </div>
-            </div>
+            {/*<div className="customer-response-wrapper" ref={element => {responseWrap.current[0] = element;}}>*/}
+                {/*<button className="customer-response-button" onClick={toggleCustomerResponse}>*/}
+                {/*</button>*/}
+                {/*<div className="response-text">*/}
+                    {/*<h3>Customer Response</h3>*/}
+                    {/*<p>*/}
+                        {/*Customer states that they are not able to connect to the internet.*/}
+                    {/*</p>*/}
+                {/*</div>*/}
+            {/*</div>*/}
 
             <div className="character-wrap" ref={element => {char.current[0] = element}}>
                 <ChartCharacter/>
             </div>
 
             <div className="interaction-wrap"  ref={element => {interactionWrap.current[0] = element;}}>
-                {/*{props.showQuestion === true  &&*/}
                     <div className="big-character-wrap">
                         <div className="employee-wrap" ref={element => {employeeWrap.current[0] = element;}}>
                             <div className="employee-image">

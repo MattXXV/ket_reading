@@ -35,8 +35,10 @@ const SplashScreen = (props) => {
 
     return (
         <div className="splash-screen" ref={element => {splashScreen.current[0] = element;}}>
-            <div className="splash-wi-logo" ref={element => {splashWIlogo.current[0] = element;}}></div>
-            <div className="splash-ket-logo" ref={element => {splashKETlogo.current[0] = element;}}></div>
+            <div className="splash-wi-logo" ref={element => {splashWIlogo.current[0] = element;}}>
+            </div>
+            <div className="splash-ket-logo" ref={element => {splashKETlogo.current[0] = element;}}>
+            </div>
             <div className="splash-title-window" ref={element => {splashTitleWindow.current[0] = element;}}>
                 <div className="splash-title" ref={element => {splashTitle.current[0] = element}}>
                     <div className="row justify-content-center">

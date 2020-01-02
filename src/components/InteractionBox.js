@@ -79,9 +79,7 @@ const InteractionBox = (props) => {
                 <div className="question-wrap" ref={element => {questionWrap.current[0] = element;}}>
                     <div className="questionHolder">
                         <p className="question-text">
-                            {props.animationSequenceNumber !== 'start' && props.currentQuestion}
-                            {props.animationSequenceNumber === 'start' && props.dataBank[props.currentScenario].scenario[0]}
-
+                            {props.currentQuestion}
                             </p>
                     </div>
 
@@ -142,7 +140,6 @@ const InteractionBox = (props) => {
 
 function mapStateToProps(state) {
     return {
-
         ...state,
         currentQuestion: state.currentQuestion,
         answerChoices: state.currentAnswerChoices,
@@ -150,10 +147,6 @@ function mapStateToProps(state) {
         isCorrect: state.isCorrect,
         userSelectedAnswerFeedback: state.userSelectedAnswerFeedback,
         showQuestion: state.showQuestion,
-        currentScenario: state.currentScenario,
-        dataBank: state.dataBank,
-        animationSequenceNumber: state.animationSequenceNumber,
-        scenarioSequenceLength: state.scenarioSequenceLength,
         employeeConversationComplete: state.employeeConversationComplete,
         lockButtons: state.lockButtons
     };

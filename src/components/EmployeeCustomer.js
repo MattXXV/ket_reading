@@ -9,7 +9,7 @@ import customerSpeechBubble from '../images/customer-bubble-02.png';
 import '../css/EmployeeCustomer.css';
 import connect from "react-redux/es/connect/connect";
 
-const EmployeeCustomer = (props) => {
+const EmployeeCustomer = ({employeeResponse, customerResponse}) => {
     return (
         <div className="big-character-wrap">
             <div className="employee-wrap">
@@ -19,7 +19,7 @@ const EmployeeCustomer = (props) => {
                 </div>
                 <div className="employee-speech-bubble">
                     <img src={employeeSpeechBubble} alt="Employee Speech Bubble."/>
-                    <p className="employee-response response-text">{props.employeeResponse}</p>
+                    <p className="employee-response response-text">{employeeResponse}</p>
                 </div>
             </div>
 
@@ -34,7 +34,7 @@ const EmployeeCustomer = (props) => {
 
                 <div className="customer-speech-bubble">
                     <img src={customerSpeechBubble} alt="Customer Speech Bubble."/>
-                    <p className="customer-response response-text">{props.customerResponse}</p>
+                    <p className="customer-response response-text">{customerResponse}</p>
                 </div>
             </div>
         </div>
@@ -44,15 +44,8 @@ const EmployeeCustomer = (props) => {
 function mapStateToProps(state) {
     return {
         ...state,
-        gameState: state.gameState,
-        currentScenario: state.currentScenario,
-        currentAnswerChoices: state.currentAnswerChoices,
-        showQuestion: state.showQuestion,
-        showFeedback: state.showFeedback,
-        animationSequenceNumber: state.animationSequenceNumber,
         employeeResponse: state.employeeResponse,
         customerResponse: state.customerResponse,
-
     };
 }
 

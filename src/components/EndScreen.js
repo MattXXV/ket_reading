@@ -9,14 +9,14 @@ import congratulations from '../images/congratulations.png';
 import '../css/EndScreen.css';
 
 
-const EndScreen = (props) => {
+const EndScreen = ({dispatch, gameScenarios}) => {
 
     const playAgain = () => {
-        if( props.gameScenarios.length === 0) {
-            props.dispatch(resetScenarios());
-            props.dispatch(changeGameState('scenario'));
+        if( gameScenarios.length === 0) {
+            dispatch(resetScenarios());
+            dispatch(changeGameState('scenario'));
         } else {
-            props.dispatch(changeGameState('scenario'));
+            dispatch(changeGameState('scenario'));
         }
     };
 
@@ -49,12 +49,6 @@ function mapStateToProps(state) {
     return {
         ...state,
         gameState: state.gameState,
-        currentScenario: state.currentScenario,
-        currentAnswerChoices: state.currentAnswerChoices,
-        showQuestion: state.showQuestion,
-        showFeedback: state.showFeedback,
-        animationSequenceNumber: state.animationSequenceNumber,
-        gameScenarios: state.gameScenarios
     };
 }
 

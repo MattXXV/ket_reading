@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from 'react-redux'
 // External functions, actions, classes
 import {changeGameState, resetAnimationNumber} from "../actions/gameEngine";
@@ -19,9 +19,6 @@ const ScenarioIntro = (props) => {
         props.dispatch(changeGameState('game'));
     };
 
-    useEffect(() => {
-
-    });
 
     return (
         <div>
@@ -50,13 +47,7 @@ const ScenarioIntro = (props) => {
 
 function mapStateToProps(state) {
     return {
-        ...state,
-        gameState: state.gameState,
-        currentScenario: state.currentScenario,
-        currentAnswerChoices: state.currentAnswerChoices,
-        showQuestion: state.showQuestion,
-        showFeedback: state.showFeedback,
-        animationSequenceNumber: state.animationSequenceNumber
+        ...state
     };
 }
 

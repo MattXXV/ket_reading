@@ -2,15 +2,6 @@ import { TweenLite } from "gsap/all";
 import {setEmployeeConversation} from '../actions/gameEngine';
 
 
-export const firstEntry = (bg, character) => {
-    TweenLite.set(character, {className:"character-wrap walking"});
-    TweenLite.to(character, 2 , {top: 198});
-    TweenLite.set(character, {delay: 2, className:"character-wrap"});
-};
-
-export const downLeft = (bg, character) => {
-
-}
 
 export const characterPosition = ( character, direction = 'facedown', delay = 0) => {
     delay = delay * 1000;
@@ -64,39 +55,30 @@ export const characterStop = (character, delay ,direction = "down") => {
     }
 };
 
-export const showEmployee = (mainWrap, employeeWrap, customerWrap) => {
+const showEmployee = (mainWrap, employeeWrap, customerWrap) => {
     TweenLite.set(mainWrap, {display: 'block'});
     TweenLite.set(customerWrap, {opacity: 0});
     TweenLite.to(mainWrap, 0.75, {opacity: 1});
     TweenLite.to(employeeWrap, 0.75, {opacity: 1});
-    console.log('employee show')
 };
 
-export const showEmployeeListening = (mainWrap, employeeListening, customerWrap) => {
+const showEmployeeListening = (mainWrap, employeeListening, customerWrap) => {
     TweenLite.set(mainWrap, {display: 'block'});
     TweenLite.set(customerWrap, {opacity: 1});
     TweenLite.to(mainWrap, 0.75, {opacity: 1});
     TweenLite.to(employeeListening, 0.75, {opacity: 1});
-    console.log('employee show')
 };
 
-export const showEmployeeStanding = (mainWrap, employeeStanding) => {
+const showEmployeeStanding = (mainWrap, employeeStanding) => {
     TweenLite.set(mainWrap, {display: 'block'});
     TweenLite.to(mainWrap, 0.75, {opacity: 1});
     TweenLite.to(employeeStanding, 0.75, {opacity: 1});
-    console.log('employee show')
 };
 
-export const showCustomer = (mainWrap, employeeWrap, customerWrap) => {
+const showCustomer = (mainWrap, employeeWrap, customerWrap) => {
     TweenLite.set(mainWrap, {display: 'block'});
     TweenLite.to(mainWrap, 0.75, {opacity: 1});
     TweenLite.to(customerWrap, 0.75, {opacity: 1});
-    console.log('customer show')
-};
-
-export const showQuestion = (questionWrap) => {
-    TweenLite.to(questionWrap, 0.75, {opacity: 1});
-    console.log('question show')
 };
 
 export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, who, store, employeeStanding, employeeListening ) => {
@@ -121,7 +103,6 @@ export const animateEmployeeCustomer = (mainWrap, employeeWrap, customerWrap, wh
             store.dispatch(setEmployeeConversation(true));
             break;
         case 'employeeListening':
-            console.log('employee listening')
             showEmployeeListening(mainWrap, employeeListening, customerWrap);
             store.dispatch(setEmployeeConversation(true));
             break;

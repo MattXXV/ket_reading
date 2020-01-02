@@ -1,10 +1,9 @@
 import React from 'react';
-import connect from "react-redux/es/connect/connect";
 // Stylesheet
 import '../css/ChartCharacter.css';
 
 
-const ChartCharacter = (props) => {
+const ChartCharacter = () => {
 
     return (
         <div className="character">
@@ -13,11 +12,5 @@ const ChartCharacter = (props) => {
 };
 
 
-function mapStateToProps(state) {
-    return {
-        ...state,
-        gameState: state.gameState
-    };
-}
 
-export default connect(mapStateToProps)(ChartCharacter);
+export default ChartCharacter;

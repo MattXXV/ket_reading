@@ -1,9 +1,8 @@
 import React from 'react';
-import connect from "react-redux/es/connect/connect";
 // Stylesheet
 import '../css/HelpScreen.css';
 
-const HelpScreen = ({gameState}) => {
+const HelpScreen = () => {
 
     return (
         <div className="help-screen">
@@ -20,10 +19,5 @@ const HelpScreen = ({gameState}) => {
     )
 };
 
-function mapStateToProps(state) {
-    return {
-        gameState: state.gameState
-    };
-}
 
-export default connect(mapStateToProps)(HelpScreen);
+export default HelpScreen;
