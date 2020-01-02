@@ -4,7 +4,7 @@
     bottom: 0;
     height: 165px;
     background: #c5c4c9;
-    padding-top: 20px;
+    padding: 15px 0 10px 0;
     opacity: 0;
 }
 
@@ -27,12 +27,14 @@
 }
 
 .interaction-option-button {
-    width: 281px;
+    width: 277px;
     color: white;
     font-weight: 400;
-    padding: 15px 0;
+    padding: 15px 5px;
     border: 10px solid #064763;
+    height: 95px;
     background: #0c7ea6;
+}
 }
 
 .feedback-container  {
