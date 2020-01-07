@@ -2,12 +2,15 @@ import React, {useRef, useEffect}  from 'react';
 import { connect } from 'react-redux';
 // External funcs, actions, classes
 import { TweenLite, TimelineLite } from "gsap/all";
+import CSSPlugin from 'gsap/CSSPlugin';
 import {changeGameState} from '../actions/gameEngine'
 // Images
 import employee_splash from "../images/character-with-headset.png";
 import splash_working_title from '../images/working-title-long.png';
 // Stylesheets
 import '../css/SplashScreen.css'
+
+const c = CSSPlugin;
 
 
 const SplashScreen = (props) => {

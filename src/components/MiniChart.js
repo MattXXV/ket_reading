@@ -2,6 +2,7 @@ import React, {useRef, useEffect} from 'react';
 import connect from "react-redux/es/connect/connect";
 // External functions, classes, actions
 import { TweenLite} from "gsap/all";
+import CSSPlugin from 'gsap/CSSPlugin';
 // Images
 import miniChart1 from '../images/mini-chart-1.png';
 import miniChart2 from '../images/mini-chart-2.png';
@@ -10,7 +11,7 @@ import miniChart4 from '../images/mini-chart-4.png';
 import miniCharacter from '../images/mini-char.png'
 // Stylesheet
 import '../css/MiniChart.css';
-
+const c = CSSPlugin;
 
 const MiniChart = (props) => {
    // animated assets

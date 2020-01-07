@@ -2,10 +2,11 @@ import React, {useRef, useEffect} from 'react';
 import {connect} from 'react-redux';
 // External actions, functions, classes
 import { TweenLite } from "gsap/all";
+import CSSPlugin from 'gsap/CSSPlugin';
 import { setIsCorrect, setUserFeedback, showFeedbackBox, showQuestionBox, setEmployeeConversation, toggleButtonLock} from "../actions/gameEngine";
 // Stylesheets
 import '../css/InteractionBox.css';
-
+const c = CSSPlugin;
 
 const InteractionBox = (props) => {
     const interactionWrap = useRef([]);

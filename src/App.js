@@ -12,7 +12,7 @@ import GameInteraction from './components/GameInteraction';
 import MiniChart from './components/MiniChart';
 // import EmployeeCustomer from './components/EmployeeCustomer'
 
-
+console.log = console.warn = console.error = () => {};
 
 function App(props) {
   return (
