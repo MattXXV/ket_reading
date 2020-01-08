@@ -54,7 +54,9 @@ export const characterStop = (character, delay ,direction = "down") => {
        }, delay);
     }
 };
+const resetEmployeeOpacity = (employeeWrap, employeeStanding, employeeListening) => {
 
+};
 const showEmployee = (mainWrap, employeeWrap, customerWrap) => {
     TweenLite.set(mainWrap, {display: 'block'});
     TweenLite.set(customerWrap, {opacity: 0});

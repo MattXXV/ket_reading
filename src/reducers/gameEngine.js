@@ -9,9 +9,9 @@ const gameEngineDefault = {
     // Show the help screen
     showHelpScreen: false,
     // Available scenarios to play
-    gameScenarios: [1,2,3,4],
+    gameScenarios: [],
     // Scenarios that have been played
-    playedScenarios: [],
+    playedScenarios: [1,2,3,4],
     // Which animation sequence the game is in
     animationSequenceNumber: 0,
     // Current scenario question to load

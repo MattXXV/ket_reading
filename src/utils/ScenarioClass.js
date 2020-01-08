@@ -83,7 +83,7 @@ class Scenario  {
                     TweenLite.to(this.background, .5, { top: rowOne.topWalk});
                     characterPosition(this.character, 'faceleft', .5);
                     TweenLite.to(this.background, 2, { delay: .5, left: rowOne.leftOne});
-                    characterPosition(this.character, 'facedown', 2.5);
+                    characterPosition(this.character, 'faceup', 2.5);
                     TweenLite.to(this.background, .5, {delay: 2.5, top:  rowOne.topStand});
                     characterStop(this.character, 3 );
                     setTimeout(() => {this.showQuestion('employee');}, 3500);
@@ -93,7 +93,7 @@ class Scenario  {
                     TweenLite.to(this.background, .5, { top: rowOne.topWalk});
                     characterPosition(this.character, 'faceleft', .5);
                     TweenLite.to(this.background, 2, { delay: .5, left: rowOne.leftTwo});
-                    characterPosition(this.character, 'facedown', 2.5);
+                    characterPosition(this.character, 'faceup', 2.5);
                     TweenLite.to(this.background, .5, {delay: 2.5, top:  rowOne.topStand});
                     characterStop(this.character, 3 );
                     setTimeout(() => {this.showQuestion('both');}, 3500);
@@ -113,7 +113,7 @@ class Scenario  {
                     TweenLite.to(this.background, .5, { top: rowTwo.topWalk});
                     characterPosition(this.character, 'faceleft', .5);
                     TweenLite.to(this.background, 2, { delay: .5, left: rowTwo.leftOne});
-                    characterPosition(this.character, 'facedown', 2.5);
+                    characterPosition(this.character, 'faceup', 2.5);
                     TweenLite.to(this.background, 0.5, {delay: 2.5, top: rowTwo.topStand});
                     characterStop(this.character, 3 );
                     setTimeout(() => {this.showQuestion('employee');}, 3500);
@@ -123,7 +123,7 @@ class Scenario  {
                     TweenLite.to(this.background, .5, {  top: rowTwo.topWalk});
                     characterPosition(this.character, 'faceleft', 0.5);
                     TweenLite.to(this.background, 2, { delay: .5, left: rowTwo.leftTwo});
-                    characterPosition(this.character, 'facedown', 2.5);
+                    characterPosition(this.character, 'faceup', 2.5);
                     TweenLite.to(this.background, 0.5, {delay: 2.5, top: rowTwo.topStand});
                     characterStop(this.character, 3 );
                     setTimeout(() => {this.showQuestion('both');}, 3500);
@@ -188,7 +188,7 @@ class Scenario  {
                     TweenLite.to(this.background, .5, { top: rowTwo.topWalk});
                     characterPosition(this.character, 'faceleft', .5);
                     TweenLite.to(this.background, 2, { delay: .5, left: rowTwo.leftOne});
-                    characterPosition(this.character, 'facedown', 2.5);
+                    characterPosition(this.character, 'faceup', 2.5);
                     TweenLite.to(this.background, .5, {delay: 2.5, top:  rowTwo.topStand});
                     characterStop(this.character, 3 );
                     setTimeout(() => {this.showQuestion('employee');}, 3500);
@@ -198,7 +198,7 @@ class Scenario  {
                     TweenLite.to(this.background, 0.5, { top: rowTwo.topWalk});
                     characterPosition(this.character, 'faceleft', 0.5);
                     TweenLite.to(this.background, 2, { delay: 0.5, left: rowTwo.leftTwo});
-                    characterPosition(this.character, 'facedown', 2.5);
+                    characterPosition(this.character, 'faceup', 2.5);
                     TweenLite.to(this.background, .5, {delay: 2.5, top:  rowTwo.topStand});
                     characterStop(this.character, 3 );
                     setTimeout(() => {this.showQuestion('both');}, 3500);
@@ -273,7 +273,7 @@ class Scenario  {
                     TweenLite.to(this.background, .5, { top: rowThree.topWalk});
                     characterPosition(this.character, 'faceleft', .5);
                     TweenLite.to(this.background, 2, { delay: .5, left: rowThree.leftOne});
-                    characterPosition(this.character, 'facedown', 2.5);
+                    characterPosition(this.character, 'faceup', 2.5);
                     TweenLite.to(this.background, 0.5, {delay: 2.5, top:  rowThree.topStand});
                     characterStop(this.character, 3 );
                     setTimeout(() => {this.showQuestion('employee');}, 3500);
@@ -283,7 +283,7 @@ class Scenario  {
                     TweenLite.to(this.background, .5, { top: rowThree.topWalk});
                     characterPosition(this.character, 'faceleft', .5);
                     TweenLite.to(this.background, 2, { delay: .5, left: rowThree.leftTwo});
-                    characterPosition(this.character, 'facedown', 2.5);
+                    characterPosition(this.character, 'faceup', 2.5);
                     TweenLite.to(this.background, 0.5, {delay: 2.5, top:  rowThree.topStand});
                     characterStop(this.character, 3 );
                     setTimeout(() => {this.showQuestion('both');}, 3500);

@@ -147,6 +147,7 @@ const GameInteraction = (props) => {
                     <InteractionBox animate={animateBG}
                                     interactionW={interactionWrap}
                                     employeeStanding={employeeStanding}
+                                    employeeListening={employeeListening}
                                     employeeW={employeeWrap}
                                     employeeSpeech={employeeSpeech}
                                     customerW={customerWrap}

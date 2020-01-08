@@ -57,6 +57,8 @@ const InteractionBox = (props) => {
     const continueButton = () => {
         props.dispatch(toggleButtonLock());
         TweenLite.to(props.interactionW.current[0], 0.2, {opacity: 0});
+        TweenLite.to(props.employeeStanding.current[0], 0.2, {opacity: 0});
+        TweenLite.to(props.employeeListening.current[0], 0.2, {opacity: 0});
         TweenLite.to(props.employeeW.current[0], 0.2, {opacity: 0});
         TweenLite.to(props.customerW.current[0], 0.2, {opacity: 0});
         props.dispatch(showFeedbackBox(false));
